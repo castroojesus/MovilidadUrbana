@@ -11,7 +11,18 @@
         <div class="heading">Iniciar Sesión</div>
         <form action="" class="form">
         <input required="" class="input" type="email" name="email" id="email" placeholder="Correo electrónico">
-        <input required="" class="input" type="password" name="password" id="password" placeholder="Contraseña">
+        <div class="password-container">
+            <input required class="input" type="password" id="password" placeholder="Contraseña">
+
+            <span id="togglePassword" class="eye-icon">
+                <svg id="eyeIcon" viewBox="0 0 24 24" width="22" height="22">
+                    <path id="eye" d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z"
+                        fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle id="pupil" cx="12" cy="12" r="3"
+                        fill="currentColor"/>
+                </svg>
+            </span>
+        </div>
         <span class="forgot-password"><a href="#">¿Olvidaste tu contraseña?</a></span>
         <input class="login-button" type="submit" value="Iniciar Sesión">
         </form>
@@ -35,5 +46,6 @@
             </div>
         </div>
     </div>
+    <script src="Login.js"></script>
   </body>
   </html>

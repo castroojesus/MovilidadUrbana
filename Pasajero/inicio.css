@@ -212,8 +212,8 @@ body {
 }
 
 .icon.blue { background: #e9effd; color: var(--primary-grey); }
-.icon.green { background: #e6faf5; color: #05cd99; }
-.icon.purple { background: #f2efff; color: #6a4bff; }
+.icon.green { background: #e6faf5; color: #121212; }
+.icon.purple { background: #f2efff; color: #565656; }
 
 .stat-card h3 { font-size: 1.8rem; }
 .stat-card p { color: var(--text-muted); font-size: 0.9rem; }

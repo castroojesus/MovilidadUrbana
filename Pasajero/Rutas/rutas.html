@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Rutas</title>
+    <link rel="stylesheet" href="rutas.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-box"><i data-lucide="bus"></i></div>
+                <div>
+                    <h1>Movilidad Urbana</h1>
+                    <p>Sistema de Transporte</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar"><i data-lucide="user"></i></div>
+                <div>
+                    <h3>Jesus Alfonso</h3>
+                    <p>Pasajero</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <small>MENÚ</small>
+                    <ul>
+                        <!-- Corregido: Ahora el enlace envuelve todo el contenido -->
+                        <li>
+            <a href="../Inicio/inicio.html">
+                <i data-lucide="home"></i> Inicio
+            </a>
+        </li>
+
+        <!-- Corregido: Si estás en Mapa.html, solo pon el nombre del archivo o # -->
+        <li>
+            <a href="../Mapa/Mapa.html">
+                <i data-lucide="map"></i> Mapa 
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="#"><i data-lucide="route"></i> Rutas<span class="chevron">></span></a>
+        </li>
+        <li><a href="../Horarios/horarios.html"><i data-lucide="clock"></i> Horarios</a></li>
+        <li><a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a></li>
+        <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
+        <li><i data-lucide="alert-circle"></i> Reportar</li>
+    </ul>
+            </nav>
+
+            <div class="logout">
+                <i data-lucide="log-out"></i> Cerrar Sesión
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="top-bar">
+                <h3>Rutas</h3>
+                <div class="top-actions">
+                    <button class="icon-btn notification"><i data-lucide="bell"></i></button>
+                    <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
+                </div>
+            </header>
+            <section class="route-section">
+                <!-- Placeholder para el mapa -->
+                <div class="route-placeholder">
+                    <header class="top-bar">
+                        <h2>Rutas de Transporte</h2>
+                       
+                    </header>
+                    <p>Consulta todas las rutas disponibles y sus paradas</p>
+                    <div class="filter-tabs">
+        <button class="tab active">Todas</button>
+        <button class="tab">Activas</button>
+        <button class="tab">Inactivas</button>
+    </div>
+
+    <!-- Contenedor de la lista de rutas -->
+    <div class="routes-list-scroll">
+        
+        <!-- Tarjeta de Ruta: L1 -->
+        <div class="route-card">
+            <div class="route-icon l1">
+                <i data-lucide="bus"></i>
+                <span>L1</span>
+            </div>
+            <div class="route-details">
+                <div class="route-header">
+                    <h3>Centro - Aeropuerto</h3>
+                    <span class="status-tag success"><i data-lucide="check-circle"></i> Activa</span>
+                    <i data-lucide="chevron-down" class="expand-icon"></i>
+                </div>
+                <div class="route-path">
+                    <i data-lucide="map-pin"></i> Plaza Central &rarr; Aeropuerto Internacional
+                </div>
+                <div class="route-meta">
+                    <span><i data-lucide="clock"></i> 45 min</span>
+                    <span>18.5 km</span>
+                    <span>Cada 15 min</span>
+                    <span>7 paradas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Ruta: L2 -->
+        <div class="route-card">
+            <div class="route-icon l2">
+                <i data-lucide="bus"></i>
+                <span>L2</span>
+            </div>
+            <div class="route-details">
+                <div class="route-header">
+                    <h3>Sur - Universidad</h3>
+                    <span class="status-tag success"><i data-lucide="check-circle"></i> Activa</span>
+                    <i data-lucide="chevron-down" class="expand-icon"></i>
+                </div>
+                <div class="route-path">
+                    <i data-lucide="map-pin"></i> Terminal Sur &rarr; Ciudad Universitaria
+                </div>
+                <div class="route-meta">
+                    <span><i data-lucide="clock"></i> 30 min</span>
+                    <span>12.3 km</span>
+                    <span>Cada 10 min</span>
+                    <span>5 paradas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Ruta: L4 (Inactiva) -->
+        <div class="route-card">
+            <div class="route-icon l4">
+                <i data-lucide="bus"></i>
+                <span>L4</span>
+            </div>
+            <div class="route-details">
+                <div class="route-header">
+                    <h3>Circular Centro</h3>
+                    <span class="status-tag danger"><i data-lucide="x-circle"></i> Inactiva</span>
+                    <i data-lucide="chevron-down" class="expand-icon"></i>
+                </div>
+                <div class="route-path">
+                    <i data-lucide="map-pin"></i> Plaza Central &rarr; Plaza Central
+                </div>
+                <div class="route-meta">
+                    <span><i data-lucide="clock"></i> 20 min</span>
+                    <span>5.0 km</span>
+                    <span>---</span>
+                    <span>12 paradas</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+                    
+                </div>
+            </section>
+           
+
+        </main>
+    </div>
+    <script src="rutas.js"></script>
+    <script>
+        
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

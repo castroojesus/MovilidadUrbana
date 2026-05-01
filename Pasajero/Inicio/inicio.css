@@ -99,6 +99,20 @@ body {
 
 .chevron { margin-left: auto; font-size: 0.8rem; }
 
+.menu ul li a {
+    text-decoration: none; 
+    color: inherit;       
+    display: flex;        
+    align-items: center;
+    gap: 15px;            
+    width: 100%;          
+}
+
+
+.menu li:hover a {
+    color: var(--primary-blue);
+}
+
 .logout {
     margin-top: auto;
     padding: 12px;
@@ -111,6 +125,7 @@ body {
 
 /* Main Content */
 .content {
+    height: 100vh;
     flex: 1;
     padding: 30px 50px;
 }
@@ -232,6 +247,15 @@ body {
     font-size: 0.9rem;
 }
 
+.routes-list{
+    display: flex;
+    flex-direction: column; /* Pone una ruta debajo de otra */
+    gap: 16px;              /* Crea el espacio automático entre ellas */
+    margin-top: 20px;
+    flex: 1; /* Esto hace que la lista se estire para llenar el hueco */
+    overflow-y: auto;
+}
+
 .route-item {
     background: var(--white);
     padding: 20px;
@@ -265,3 +289,16 @@ body {
     font-weight: bold;
     margin-right: 20px;
 }
+
+.status-tag  {
+    
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.status-tag.success { background: #e6faf5; color: #05cd99; }
+.status-tag.warning { background: #fff4e5; color: #ff9800;}
+.status-tag.danger { background: #ffe5e5; color: #ff4d4d; }

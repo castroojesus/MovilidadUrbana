@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Map</title>
+    <link rel="stylesheet" href="mapa.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-box"><i data-lucide="bus"></i></div>
+                <div>
+                    <h1>Movilidad Urbana</h1>
+                    <p>Sistema de Transporte</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar"><i data-lucide="user"></i></div>
+                <div>
+                    <h3>Jesus Alfonso</h3>
+                    <p>Pasajero</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <small>MENÚ</small>
+                    <ul>
+                        <!-- Corregido: Ahora el enlace envuelve todo el contenido -->
+                        <li>
+            <a href="../Inicio/inicio.html">
+                <i data-lucide="home"></i> Inicio
+            </a>
+        </li>
+
+        <!-- Corregido: Si estás en Mapa.html, solo pon el nombre del archivo o # -->
+        <li class="active">
+            <a href="#">
+                <i data-lucide="map"></i> Mapa <span class="chevron">></span>
+            </a>
+        </li>
+
+        <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
+        <li><a href="../Horarios/horarios.html"><i data-lucide="clock"></i> Horarios</a></li>
+        <li><a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a></li>
+        <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
+        <li><i data-lucide="alert-circle"></i> Reportar</li>
+    </ul>
+            </nav>
+
+            <div class="logout">
+                <i data-lucide="log-out"></i> Cerrar Sesión
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="top-bar">
+                <h3>Mapa</h3>
+                <div class="top-actions">
+                    <button class="icon-btn notification"><i data-lucide="bell"></i></button>
+                    <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
+                </div>
+            </header>
+
+            <!-- Aquí iría el contenido del mapa -->
+            <section class="map-section">
+                <!-- Placeholder para el mapa -->
+                <div class="map-placeholder">
+                    <header class="top-bar">
+                        <h2>Mapa de Rutas</h2>
+                       
+                    </header>
+                    <p>Vista en tiempo real del sistema de transporte público.</p>
+                    <div class="map-container">
+                        <img src="assets/images/mapa_los_mochis.jpg" alt="Mapa Satelital de Mochis">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

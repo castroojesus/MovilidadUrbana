@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movilidad Urbana - Dashboard</title>
+    <title>Passenger Home Page</title>
     <link rel="stylesheet" href="inicio.css">
     <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -24,7 +24,7 @@
             <div class="user-card">
                 <div class="avatar"><i data-lucide="user"></i></div>
                 <div>
-                    <h3>Carlos Mendoza</h3>
+                    <h3>Jesus Alfonso</h3>
                     <p>Pasajero</p>
                 </div>
             </div>
@@ -32,12 +32,16 @@
             <nav class="menu">
                 <small>MENÚ</small>
                 <ul>
-                    <li class="active"><i data-lucide="home"></i> Inicio <span class="chevron">></span></li>
-                    <li><i data-lucide="map"></i> Mapa</li>
-                    <li><i data-lucide="route"></i> Rutas</li>
-                    <li><i data-lucide="clock"></i> Horarios</li>
-                    <li><i data-lucide="navigation"></i> Planificador</li>
-                    <li><i data-lucide="star"></i> Favoritos</li>
+                    <li class="active">
+                        <a href="#"><i data-lucide="home"></i> Inicio <span class="chevron">></span></a>
+                    </li>
+                    <li>
+                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
+                    </li>
+                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
+                    <li><a href="../Horarios/horarios.html"><i data-lucide="clock"></i> Horarios</a></li>
+                    <li><a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a></li>
+                    <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
                     <li><i data-lucide="alert-circle"></i> Reportar</li>
                 </ul>
             </nav>
@@ -88,22 +92,40 @@
                 </div>
             </div>
 
-            <section class="routes-list">
+            <div class="routes-list">
                 <div class="section-header">
                     <h3>Rutas disponibles</h3>
                     <a href="#">Ver todas <i data-lucide="arrow-right"></i></a>
                 </div>
                 
-                <div class="route-item">
+                <div class="route-item" type="button">
                     <div class="route-badge">L1</div>
                     <div class="route-info">
                         <strong>Alamos Country Paseo Alamaeda </strong>
                         <p><i data-lucide="map-pin"></i> Alamos Country → Zona 30</p>
                     </div>
-                    <span class="status-tag">A tiempo</span>
+                    <span class="status-tag success">A tiempo</span>
                     <i data-lucide="chevron-right"></i>
                 </div>
-            </section>
+                <div class="route-item" type="button">
+                    <div class="route-badge">L2</div>
+                    <div class="route-info">
+                        <strong>Libertad Zaragoza </strong>
+                        <p><i data-lucide="map-pin"></i> Libertad → Zaragoza</p>
+                    </div>
+                    <span class="status-tag warning">Retraso</span>
+                    <i data-lucide="chevron-right"></i>
+                </div>
+                <div class="route-item" type="button">
+                    <div class="route-badge">L3</div>
+                    <div class="route-info">
+                        <strong>Malvinas Zaragoza </strong>
+                        <p><i data-lucide="map-pin"></i> Malvinas → Zaragoza</p>
+                    </div>
+                    <span class="status-tag danger">No Disponible</span>
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </div>
         </main>
     </div>
 

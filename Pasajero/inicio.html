@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movilidad Urbana - Dashboard</title>
+    <link rel="stylesheet" href="inicio.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-box"><i data-lucide="bus"></i></div>
+                <div>
+                    <h1>Movilidad Urbana</h1>
+                    <p>Sistema de Transporte</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar"><i data-lucide="user"></i></div>
+                <div>
+                    <h3>Carlos Mendoza</h3>
+                    <p>Pasajero</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <small>MENÚ</small>
+                <ul>
+                    <li class="active"><i data-lucide="home"></i> Inicio <span class="chevron">></span></li>
+                    <li><i data-lucide="map"></i> Mapa</li>
+                    <li><i data-lucide="route"></i> Rutas</li>
+                    <li><i data-lucide="clock"></i> Horarios</li>
+                    <li><i data-lucide="navigation"></i> Planificador</li>
+                    <li><i data-lucide="star"></i> Favoritos</li>
+                    <li><i data-lucide="alert-circle"></i> Reportar</li>
+                </ul>
+            </nav>
+
+            <div class="logout">
+                <i data-lucide="log-out"></i> Cerrar Sesión
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="top-bar">
+                <h2>Inicio</h2>
+                <div class="top-actions">
+                    <button class="icon-btn notification"><i data-lucide="bell"></i></button>
+                    <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
+                </div>
+            </header>
+
+            <section class="welcome-banner">
+                <p>Buenas noches,</p>
+                <h2>Carlos 👋</h2>
+                <div class="active-routes">
+                    <i data-lucide="send"></i> 9 rutas activas disponibles hoy
+                </div>
+            </section>
+
+            <div class="search-container">
+                <i data-lucide="search"></i>
+                <input type="text" placeholder="Buscar ruta, origen o destino...">
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon blue"><i data-lucide="bus"></i></div>
+                    <h3>9</h3>
+                    <p>Rutas</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon green"><i data-lucide="map-pin"></i></div>
+                    <h3>48</h3>
+                    <p>Paradas</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon purple"><i data-lucide="clock"></i></div>
+                    <h3>10m</h3>
+                    <p>Frecuencia mín.</p>
+                </div>
+            </div>
+
+            <section class="routes-list">
+                <div class="section-header">
+                    <h3>Rutas disponibles</h3>
+                    <a href="#">Ver todas <i data-lucide="arrow-right"></i></a>
+                </div>
+                
+                <div class="route-item">
+                    <div class="route-badge">L1</div>
+                    <div class="route-info">
+                        <strong>Centro - Aeropuerto</strong>
+                        <p><i data-lucide="map-pin"></i> Plaza Central → Aeropuerto Internacional</p>
+                    </div>
+                    <span class="status-tag">A tiempo</span>
+                    <i data-lucide="chevron-right"></i>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

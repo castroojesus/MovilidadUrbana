@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Favorites</title>
+    <link rel="stylesheet" href="favoritos.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-box"><i data-lucide="bus"></i></div>
+                <div>
+                    <h1>Movilidad Urbana</h1>
+                    <p>Sistema de Transporte</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar"><i data-lucide="user"></i></div>
+                <div>
+                    <h3>Jesus Alfonso</h3>
+                    <p>Pasajero</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <small>MENÚ</small>
+                <ul>
+                    <li>
+                        <a href="../Inicio/inicio.html"><i data-lucide="home"></i> Inicio </a>
+                    </li>
+                    <li>
+                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
+                    </li>
+                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
+                    <li >
+                        <a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a>
+                    </li>
+                    <li>
+                        <a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i data-lucide="star"></i> Favoritos<span class="chevron">></span></a>
+                    </li>
+                    <li><i data-lucide="alert-circle"></i> Reportar</li>
+                </ul>
+            </nav>
+
+            <div class="logout">
+                <i data-lucide="log-out"></i> Cerrar Sesión
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+    <header class="top-bar">
+        <h2>Favoritos</h2>
+        <div class="top-actions">
+            <button class="icon-btn"><i data-lucide="bell"></i></button>
+            <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
+        </div>
+    </header>
+
+    <section class="fav-section">
+        <h1>Rutas Favoritas</h1>
+        <p class="subtitle">Accede rápidamente a tus rutas más utilizadas</p>
+
+        <!-- Sección de Mis Favoritas -->
+        <div class="fav-container card-panel">
+            <div class="panel-header">
+                <i data-lucide="star" class="star-icon fill"></i>
+                <h2 id="favCountText">Mis Favoritas (0/10)</h2>
+            </div>
+            <div id="favList" class="fav-list">
+                
+            </div>
+        </div>
+
+        <!-- Sección para Agregar -->
+        <div class="add-fav-container card-panel">
+            <div class="panel-header">
+                <h2>Agregar a Favoritas</h2>
+            </div>
+            <div id="availableList" class="fav-list">
+                
+            </div>
+        </div>
+    </section>
+</main>
+    </div>
+
+    <script src="favoritos.js"></script>
+     
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

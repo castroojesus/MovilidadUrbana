@@ -3,115 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Planner</title>
-    <link rel="stylesheet" href="planificador.css">
-    <!-- Iconos Lucide -->
+    <title>Planificador - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="planificador.css">
 </head>
 <body>
-
-    <div class="container">
-        <!-- Sidebar -->
+    <div class="app-container">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="icon-box"><i data-lucide="bus"></i></div>
-                <div>
-                    <h1>Movilidad Urbana</h1>
-                    <p>Sistema de Transporte</p>
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
                 </div>
+
+                <nav class="nav-menu">
+                    <a href="../Inicio/inicio.html" class="nav-item" title="Inicio">
+                        <i data-lucide="home"></i>
+                    </a>
+                    
+                    <a href="../Mapa/Mapa.html" class="nav-item" title="Mapa">
+                        <i data-lucide="map"></i>
+                    </a>
+                    
+                    <a href="../Rutas/rutas.html" class="nav-item" title="Rutas">
+                        <i data-lucide="git-merge"></i>
+                    </a>
+                    
+                    <a href="../Horario/horario.html" class="nav-item" title="Horarios">
+                        <i data-lucide="clock"></i>
+                    </a>
+                    
+                    <a href="#" class="nav-item active" title="Planificador">
+                        <i data-lucide="navigation"></i>
+                    </a>
+                    
+                    <a href="../Favoritos/favoritos.html" class="nav-item" title="Favoritos">
+                        <i data-lucide="star"></i>
+                    </a>
+                    
+                    <a href="../Reportes/reportes.html" class="nav-item" title="Reportar">
+                        <i data-lucide="alert-circle"></i>
+                    </a>
+                </nav>
             </div>
-
-            <div class="user-card">
-                <div class="avatar"><i data-lucide="user"></i></div>
-                <div>
-                    <h3>Jesus Alfonso</h3>
-                    <p>Pasajero</p>
-                </div>
-            </div>
-
-            <nav class="menu">
-                <small>MENÚ</small>
-                <ul>
-                    <li>
-                        <a href="../Inicio/inicio.html"><i data-lucide="home"></i> Inicio </a>
-                    </li>
-                    <li>
-                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
-                    </li>
-                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
-                    <li >
-                        <a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a>
-                    </li>
-                    <li class="active">
-                        <a href="#"><i data-lucide="navigation"></i> Planificador<span class="chevron">></span></a>
-                    </li>
-                    <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
-                    <li>
-                        <a href="../Reportes/reportes.html"><i data-lucide="alert-circle"></i> Reportar</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="logout">
-                <i data-lucide="log-out"></i> Cerrar Sesión
+            
+            <div class="sidebar-bottom">
+                <button class="logout-btn" id="logoutBtn" title="Cerrar Sesión">
+                    <i data-lucide="log-out"></i>
+                </button>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="content">
-    <!-- Buscador -->
-    <section class="planner-card">
-        <h2>Planificador de Rutas</h2>
-        <div class="input-group">
-            <label>Origen</label>
-            <div class="select-wrapper">
-                <i data-lucide="map-pin" class="icon-input"></i>
-                <select id="origen">
-                    <option value="" disabled selected>Selecciona origen</option>
-                    <option value="Plaza Central">Plaza Central</option>
-                    <option value="Av. Libertad">Av. Libertad</option>
-                    <option value="Hospital General">Hospital General</option>
-                    <option value="Aeropuerto Internacional">Aeropuerto Internacional</option>
-                    <option value="Universidad">Universidad</option>
-                </select>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Planificador de Viajes</h1>
+                    <div class="header-welcome-group">
+                        <span class="welcome-top-text">Traza tu ruta ideal,</span>
+                        <h2 class="welcome-user-heading">Jesús Alfonso</h2>
+                    </div>
+                </div>
+               
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label active"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label"><i data-lucide="sun"></i></span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge">4</span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item success">La Línea L1 se encuentra operando sin demoras.</div>
+                            <div class="dropdown-item warning">Alerta: Línea L2 presenta un retraso menor.</div>
+                            <div class="dropdown-item danger">Actualización de mapas completada con éxito.</div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Jesús Alfonso</span>
+                                <span class="profile-role">Pasajero</span>
+                            </div>
+                            <div class="avatar">JA</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="planner-card-form">
+                <div class="form-row">
+                    <div class="input-container">
+                        <label><i data-lucide="locate"></i> Origen de Partida</label>
+                        <select id="origenSelect">
+                            <option value="" disabled selected>Selecciona punto de partida</option>
+                            <option value="GPS" class="gps-option">📍 Mi ubicación actual (Tiempo Real)</option>
+                            <option value="Centro">Centro (Plaza Central Zaragoza)</option>
+                            <option value="Scally">Colonia Scally</option>
+                            <option value="Jiquilpan">Blvd. Jiquilpan</option>
+                            <option value="Bienestar">Colonia Bienestar</option>
+                            <option value="Zaragoza">Colonia Zaragoza</option>
+                        </select>
+                    </div>
+
+                    <div class="input-container">
+                        <label><i data-lucide="navigation"></i> Destino Final</label>
+                        <select id="destinoSelect">
+                            <option value="" disabled selected>¿A dónde quieres ir?</option>
+                            <option value="Macapule">Fracc. El Macapule</option>
+                            <option value="UAS">Ciudad Universitaria UAS</option>
+                            <option value="Toledo">Colonia Antonio Toledo</option>
+                            <option value="Infonavit">Fracc. Infonavit</option>
+                            <option value="Malvinas">Colonia Malvinas</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-calculate" id="btnPlanificar">
+                    <i data-lucide="map"></i> Calcular Mejor Ruta
+                </button>
+            </section>
+
+            <div class="schedule-grid-list" id="plannerResultsContainer">
+                <div class="empty-state-message">
+                    <i data-lucide="info" style="width: 24px; height: 24px; color: var(--accent-purple);"></i>
+                    <p>Ingresa un punto de partida y destino para recomendarte las mejores líneas de transporte urbano.</p>
+                </div>
             </div>
-        </div>
-
-        <div class="input-group">
-            <label>Destino</label>
-            <div class="select-wrapper">
-                <i data-lucide="navigation" class="icon-input"></i>
-                <select id="destino">
-                    <option value="" disabled selected>Selecciona destino</option>
-                    <option value="Plaza Central">Plaza Central</option>
-                    <option value="Av. Libertad">Av. Libertad</option>
-                    <option value="Hospital General">Hospital General</option>
-                    <option value="Aeropuerto Internacional">Aeropuerto Internacional</option>
-                    <option value="Universidad">Universidad</option>
-                </select>
-            </div>
-        </div>
-
-        <button id="btnBuscar" class="btn-primary">Buscar rutas</button>
-    </section>
-
-    
-    <section id="resultados" class="results-container">
-        
-    </section>
-
-    
-    <section id="opcionesDetalle" class="options-container">
-        
-    </section>
-</main>
+        </main>
     </div>
 
     <script src="planificador.js"></script>
-     
-
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>

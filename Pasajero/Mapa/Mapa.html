@@ -3,92 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Map</title>
-    <link rel="stylesheet" href="mapa.css">
-    <!-- Iconos Lucide -->
+    <title>Mapa de Rutas - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="mapa.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
+    <div class="app-container">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="icon-box"><i data-lucide="bus"></i></div>
-                <div>
-                    <h1>Movilidad Urbana</h1>
-                    <p>Sistema de Transporte</p>
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
                 </div>
+                <nav class="nav-menu">
+                    <a href="../Inicio/inicio.html" class="nav-item" title="Inicio">
+                        <i data-lucide="home"></i>
+                    </a>
+                    
+                    <a href="#" class="nav-item active" title="Mapa">
+                        <i data-lucide="map"></i>
+                    </a>
+                    
+                    <a href="../Rutas/rutas.html" class="nav-item" title="Rutas">
+                        <i data-lucide="git-merge"></i>
+                    </a>
+                    
+                    <a href="../Horario/horario.html" class="nav-item" title="Horarios">
+                        <i data-lucide="clock"></i>
+                    </a>
+                    
+                    <a href="../Planificador/planificador.html" class="nav-item" title="Planificador">
+                        <i data-lucide="navigation"></i>
+                    </a>
+                    
+                    <a href="../Favoritos/favoritos.html" class="nav-item" title="Favoritos">
+                        <i data-lucide="star"></i>
+                    </a>
+                    
+                    <a href="../Reportes/reportes.html" class="nav-item" title="Reportar">
+                        <i data-lucide="alert-circle"></i>
+                    </a>
+                </nav>
             </div>
-
-            <div class="user-card">
-                <div class="avatar"><i data-lucide="user"></i></div>
-                <div>
-                    <h3>Jesus Alfonso</h3>
-                    <p>Pasajero</p>
-                </div>
-            </div>
-
-            <nav class="menu">
-                <small>MENÚ</small>
-                    <ul>
-                        <!-- Corregido: Ahora el enlace envuelve todo el contenido -->
-                        <li>
-            <a href="../Inicio/inicio.html">
-                <i data-lucide="home"></i> Inicio
-            </a>
-        </li>
-
-        <!-- Corregido: Si estás en Mapa.html, solo pon el nombre del archivo o # -->
-        <li class="active">
-            <a href="#">
-                <i data-lucide="map"></i> Mapa <span class="chevron">></span>
-            </a>
-        </li>
-
-        <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
-        <li><a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a></li>
-        <li><a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a></li>
-        <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
-        <li><a href="../Reportes/reportes.html"><i data-lucide="alert-circle"></i> Reportar</a></li>
-    </ul>
-            </nav>
-
-            <div class="logout">
-                <i data-lucide="log-out"></i> Cerrar Sesión
+            <div class="sidebar-bottom">
+                
+                <button class="nav-item logout-btn" title="Cerrar Sesión"><i data-lucide="log-out"></i></button>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="content">
-            <header class="top-bar">
-                <h3>Mapa</h3>
-                <div class="top-actions">
-                    <button class="icon-btn notification"><i data-lucide="bell"></i></button>
-                    <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Mapa de Rutas</h1>
+                </div>
+                <div class="topbar-right">
+                     <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+                   <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge"></span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item warning">
+                                <i data-lucide="clock" class="item-icon"></i>
+                                <div><strong>Centro:</strong> Retraso de 15 min.</div>
+                            </div>
+                            <div class="dropdown-item danger">
+                                <i data-lucide="alert-triangle" class="item-icon"></i>
+                                <div><strong>Circuito:</strong> Unidad fuera de servicio.</div>
+                            </div>
+                            <div class="dropdown-item success">
+                                <i data-lucide="check-circle" class="item-icon"></i>
+                                <div><strong>Ruta UAS:</strong> Servicio estable.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Jesus Alfonso</span>
+                                <span class="profile-role">Pasajero</span>
+                            </div>
+                            <div class="avatar">JA</div>
+                        </div>
+                        <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-user-info">
+                                <strong>Jesus Alfonso</strong>
+                                <span>jesus.alfonso@movilidadmochis.gob</span>
+                            </div>
+                            <hr>
+                            <a href="#" class="dropdown-link"><i data-lucide="user"></i> Mi Perfil</a>
+                            <a href="#" class="dropdown-link"><i data-lucide="sliders"></i> Configuración</a>
+                            <hr>
+                            <a href="#" class="dropdown-link logout-btn text-danger"><i data-lucide="log-out"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
                 </div>
             </header>
 
-            <!-- Aquí iría el contenido del mapa -->
-            <section class="map-section">
-                <!-- Placeholder para el mapa -->
-                <div class="map-placeholder">
-                    <header class="top-bar">
-                        <h2>Mapa de Rutas</h2>
-                       
-                    </header>
-                    <p>Vista en tiempo real del sistema de transporte público.</p>
-                    <div class="map-container">
-                        <img src="assets/images/mapa_los_mochis.jpg" alt="Mapa Satelital de Mochis">
+            <div class="map-layout">
+                <div class="card map-card">
+                    <div class="map-controls">
+                        <button id="toggleBusesBtn" class="control-btn"><i data-lucide="eye"></i> <span>Autobuses</span></button>
+                        <button id="fullscreenBtn" class="control-btn"><i data-lucide="maximize"></i></button>
+                    </div>
+                    <div id="map"></div>
+                </div>
+
+                <div class="card routes-panel">
+                    <div class="panel-header">
+                        <h2>Rutas Activas</h2>
+                        <div class="dropdown">
+                            <span>Mostrar todas</span> <i data-lucide="chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="routes-list" id="routesList"></div>
+                    <div class="legend-box">
+                        <div class="legend-item"><span class="line purple"></span> Línea de ruta</div>
+                        <div class="legend-item"><span class="dot-white"></span> Parada de autobús</div>
+                        <div class="legend-item">Autobús en ruta</div>
                     </div>
                 </div>
-            </section>
-
+            </div>
         </main>
     </div>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>lucide.createIcons();</script>
+    <script src="mapa.js"></script>
 </body>
-
 </html>

@@ -3,128 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Home Page</title>
-    <link rel="stylesheet" href="inicio.css">
-    <!-- Iconos Lucide -->
+    <title>Pasajero - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="inicio.css">
 </head>
 <body>
-
-    <div class="container">
-        <!-- Sidebar -->
+    <div class="app-container">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="icon-box"><i data-lucide="bus"></i></div>
-                <div>
-                    <h1>Movilidad Urbana</h1>
-                    <p>Sistema de Transporte</p>
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
                 </div>
+
+                <nav class="nav-menu">
+                    <a href="#" class="nav-item active" title="Inicio">
+                        <i data-lucide="home"></i>
+                    </a>
+                    
+                    <a href="../Mapa/Mapa.html" class="nav-item" title="Mapa">
+                        <i data-lucide="map"></i>
+                    </a>
+                    
+                    <a href="../Rutas/rutas.html" class="nav-item" title="Rutas">
+                        <i data-lucide="git-merge"></i>
+                    </a>
+                    
+                    <a href="../Horario/horario.html" class="nav-item" title="Horarios">
+                        <i data-lucide="clock"></i>
+                    </a>
+                    
+                    <a href="../Planificador/planificador.html" class="nav-item" title="Planificador">
+                        <i data-lucide="navigation"></i>
+                    </a>
+                    
+                    <a href="../Favoritos/favoritos.html" class="nav-item" title="Favoritos">
+                        <i data-lucide="star"></i>
+                    </a>
+                    
+                    <a href="../Reportes/reportes.html" class="nav-item" title="Reportar">
+                        <i data-lucide="alert-circle"></i>
+                    </a>
+                </nav>
             </div>
-
-            <div class="user-card">
-                <div class="avatar"><i data-lucide="user"></i></div>
-                <div>
-                    <h3>Jesus Alfonso</h3>
-                    <p>Pasajero</p>
-                </div>
-            </div>
-
-            <nav class="menu">
-                <small>MENÚ</small>
-                <ul>
-                    <li class="active">
-                        <a href="#"><i data-lucide="home"></i> Inicio <span class="chevron">></span></a>
-                    </li>
-                    <li>
-                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
-                    </li>
-                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
-                    <li><a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a></li>
-                    <li><a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a></li>
-                    <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
-                    <li><a href="../Reportes/reportes.html"><i data-lucide="alert-circle"></i> Reportar</a></li>
-                </ul>
-            </nav>
-
-            <div class="logout">
-                <i data-lucide="log-out"></i> Cerrar Sesión
+            
+            <div class="sidebar-bottom">
+                <button class="nav-item" id="logoutBtn" title="Cerrar Sesión"><i data-lucide="log-out"></i></button>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="content">
-            <header class="top-bar">
-                <h2>Inicio</h2>
-                <div class="top-actions">
-                    <button class="icon-btn notification"><i data-lucide="bell"></i></button>
-                    <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Panel Principal</h1>
+                    <div class="header-welcome-group">
+                        <span class="welcome-top-text">¡Bienvenido de vuelta,</span>
+                        <h2 class="welcome-user-heading">Jesús Alfonso!</h2>
+                    </div>
+                </div>
+               
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge">4</span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item success">La Línea L1 se encuentra operando sin demoras.</div>
+                            <div class="dropdown-item warning">Alerta: Línea L2 presenta un retraso menor.</div>
+                            <div class="dropdown-item danger">Actualización de mapas completada con éxito.</div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Jesús Alfonso</span>
+                                <span class="profile-role">Pasajero</span>
+                            </div>
+                            <div class="avatar">JA</div>
+                        </div>
+                    </div>
                 </div>
             </header>
 
-            <section class="welcome-banner">
-                <p>Buenas,</p>
-                <h2>Jesus </h2>
-                <div class="active-routes">
-                    <i data-lucide="send"></i> 9 rutas activas disponibles hoy
+            <section class="search-wrapper">
+                <div class="search-bar-pill">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Buscar...">
                 </div>
             </section>
 
-            <div class="search-container">
-                <i data-lucide="search"></i>
-                <input type="text" placeholder="Buscar ruta, origen o destino...">
+            <div class="section-meta">
+                <h3>Rutas Recomendadas</h3>
+                <a href="../Rutas/rutas.html" class="view-all-link">Ver todas</a>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="icon blue"><i data-lucide="bus"></i></div>
-                    <h3>9</h3>
-                    <p>Rutas</p>
-                </div>
-                <div class="stat-card">
-                    <div class="icon green"><i data-lucide="map-pin"></i></div>
-                    <h3>48</h3>
-                    <p>Paradas</p>
-                </div>
-                <div class="stat-card">
-                    <div class="icon purple"><i data-lucide="clock"></i></div>
-                    <h3>10m</h3>
-                    <p>Frecuencia mín.</p>
-                </div>
-            </div>
-
-            <div class="routes-list">
-                <div class="section-header">
-                    <h3>Rutas disponibles</h3>
-                    <a href="#">Ver todas <i data-lucide="arrow-right"></i></a>
-                </div>
+            <div class="routes-grid-list">
                 
-                <div class="route-item" type="button">
-                    <div class="route-badge">L1</div>
-                    <div class="route-info">
-                        <strong>Alamos Country Paseo Alamaeda </strong>
-                        <p><i data-lucide="map-pin"></i> Alamos Country → Zona 30</p>
+                <div class="route-card-item event-block event-lime" role="button">
+                    <div class="route-card-body">
+                        <span class="route-title-text">Alamos Country Paseo Alameda</span>
+                        <p><i data-lucide="map-pin"></i> Curaroza → Aculanteda · 17:00</p>
                     </div>
-                    <span class="status-tag success">A tiempo</span>
-                    <i data-lucide="chevron-right"></i>
+                    <span class="status-pill success">A tiempo</span>
                 </div>
-                <div class="route-item" type="button">
-                    <div class="route-badge">L2</div>
-                    <div class="route-info">
-                        <strong>Libertad Zaragoza </strong>
-                        <p><i data-lucide="map-pin"></i> Libertad → Zaragoza</p>
+
+                <div class="route-card-item event-block event-purple" role="button">
+                    <div class="route-card-body">
+                        <span class="route-title-text">Libertad Zaragoza</span>
+                        <p><i data-lucide="map-pin"></i> Zaragoza → San/iargoza · 12:00</p>
                     </div>
-                    <span class="status-tag warning">Retraso</span>
-                    <i data-lucide="chevron-right"></i>
+                    <span class="status-pill warning">Retraso</span>
                 </div>
-                <div class="route-item" type="button">
-                    <div class="route-badge">L3</div>
-                    <div class="route-info">
-                        <strong>Malvinas Zaragoza </strong>
-                        <p><i data-lucide="map-pin"></i> Malvinas → Zaragoza</p>
+
+                <div class="route-card-item event-block event-slate" role="button">
+                    <div class="route-card-body">
+                        <span class="route-title-text">Malvinas Zaragoza</span>
+                        <p><i data-lucide="map-pin"></i> Zaragoza → Malvinas · 18:30</p>
                     </div>
-                    <span class="status-tag danger">No Disponible</span>
-                    <i data-lucide="chevron-right"></i>
+                    <span class="status-pill danger">No Disponible</span>
                 </div>
+
             </div>
         </main>
     </div>
@@ -132,5 +138,6 @@
     <script>
         lucide.createIcons();
     </script>
+    <script src="inicio.js"></script>
 </body>
 </html>

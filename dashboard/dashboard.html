@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
+                </div>
+
+                <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item active" title="Dashboard">
+                    <i data-lucide="layout-dashboard"></i>
+                </a>
+                
+                <a href="../mapa/mapa.html" class="nav-item" title="Mapa">
+                    <i data-lucide="map"></i>
+                </a>
+                
+                <a href="../rutas/rutas.html" class="nav-item" title="Rutas">
+                    <i data-lucide="git-merge"></i>
+                </a>
+                <a href="../choferes/choferes.html" class="nav-item" title="Choferes">
+                    <i data-lucide="users"></i>
+                </a>
+                <a href="../horarios/horarios.html" class="nav-item" title="Horarios">
+                    <i data-lucide="calendar"></i>
+                </a>
+                </nav>
+
+            </div>
+            <div class="sidebar-bottom">
+                <button class="nav-item" title="Configuración"><i data-lucide="settings"></i></button>
+                <button class="nav-item logout-btn" title="Cerrar Sesión"><i data-lucide="log-out"></i></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Panel Principal</h1>
+                </div>
+               
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge"></span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item warning">
+                                <i data-lucide="clock" class="item-icon"></i>
+                                <div><strong>Centro:</strong> Retraso de 15 min.</div>
+                            </div>
+                            <div class="dropdown-item danger">
+                                <i data-lucide="alert-triangle" class="item-icon"></i>
+                                <div><strong>Circuito:</strong> Unidad fuera de servicio.</div>
+                            </div>
+                            <div class="dropdown-item success">
+                                <i data-lucide="check-circle" class="item-icon"></i>
+                                <div><strong>Ruta UAS:</strong> Servicio estable.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Carolina Soto</span>
+                                <span class="profile-role">Encargada</span>
+                            </div>
+                            <div class="avatar">CS</div>
+                        </div>
+                        <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-user-info">
+                                <strong>Carolina Soto</strong>
+                                <span>carolina.soto@movilidadmochis.gob</span>
+                            </div>
+                            <hr>
+                            <a href="#" class="dropdown-link"><i data-lucide="user"></i> Mi Perfil</a>
+                            <a href="#" class="dropdown-link"><i data-lucide="sliders"></i> Configuración</a>
+                            <hr>
+                            <a href="#" class="dropdown-link logout-btn text-danger"><i data-lucide="log-out"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="hero-section">
+                <div class="welcome-block">
+                    <h2>¡Bienvenida de vuelta, Carolina!</h2>
+                    <p>Información de transporte público de Los Mochis.</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat-card">
+                        <span class="hero-stat-label">Rutas Activas Hoy</span>
+                        <div class="hero-stat-value">9<span class="hero-stat-sub">/10</span></div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <span class="hero-stat-label">Puntualidad General</span>
+                        <div class="hero-stat-value">83%</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-icon bg-purple">
+                        <i data-lucide="bus"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>9/10</h3>
+                        <p>Rutas Activas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon bg-green">
+                        <i data-lucide="users-2"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>4</h3>
+                        <p>Choferes Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon bg-blue">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>350</h3>
+                        <p>Pasajeros / día</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon bg-lime">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>83%</h3>
+                        <p>Puntualidad</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="performance-section">
+                <div class="card performance-card">
+                    <div class="card-header-container">
+                        <h3>Resumen de rendimiento</h3>
+                        <a href="#" class="manage-link">Gestionar Rutas <i data-lucide="arrow-right"></i></a>
+                    </div>
+                    <div class="progress-list">
+                        <div class="progress-item">
+                            <div class="progress-labels">
+                                <span class="route-name">Centro - Aeropuerto Topolobampo</span>
+                                <span class="route-val">80%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar bar-purple" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-labels">
+                                <span class="route-name">Centro - UAS</span>
+                                <span class="route-val">75%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar bar-green" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-labels">
+                                <span class="route-name">Circuito</span>
+                                <span class="route-val">67%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar bar-yellow" style="width: 67%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card alerts-card">
+                    <h3>Notificaciones de Sistema</h3>
+                    <div class="alert-list">
+                        <div class="alert-box warning-box">
+                            <i data-lucide="clock"></i>
+                            <div class="alert-text"><strong>Centro:</strong> Retraso de 15 min.</div>
+                        </div>
+                        <div class="alert-box danger-box">
+                            <i data-lucide="alert-circle"></i>
+                            <div class="alert-text"><strong>Circuito:</strong> Unidad fuera de servicio.</div>
+                        </div>
+                        <div class="alert-box success-box">
+                            <i data-lucide="check-circle-2"></i>
+                            <div class="alert-text"><strong>Ruta UAS:</strong> Servicio estable.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-grid">
+                <div class="card table-card">
+                    <div class="card-header-container">
+                        <h3>Choferes en Turno</h3>
+                        <button class="text-btn">Ver Todos</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="drivers-table">
+                            <thead>
+                                <tr>
+                                    <th>Chofer</th>
+                                    <th>Ruta</th>
+                                    <th>Turno</th>
+                                    <th>Estado</th>
+                                    <th>Nota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="driver-cell">
+                                            <div class="driver-avatar">JP</div>
+                                            <div>
+                                                <div class="driver-name">Juan Pérez</div>
+                                                <div class="driver-sub">ID: #1024</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Centro - Aeropuerto</td>
+                                    <td><span class="badge badge-time">06:00 - 14:00</span></td>
+                                    <td><span class="badge status-active">Activo</span></td>
+                                    <td class="text-muted">Sin incidencias</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="driver-cell">
+                                            <div class="driver-avatar">LR</div>
+                                            <div>
+                                                <div class="driver-name">Luis Romero</div>
+                                                <div class="driver-sub">ID: #1088</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Centro - UAS</td>
+                                    <td><span class="badge badge-time">07:00 - 15:00</span></td>
+                                    <td><span class="badge status-active">Activo</span></td>
+                                    <td class="text-warning">Retraso menor</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="driver-cell">
+                                            <div class="driver-avatar">PS</div>
+                                            <div>
+                                                <div class="driver-name">Pedro Soto</div>
+                                                <div class="driver-sub">ID: #1112</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Circuito</td>
+                                    <td><span class="badge badge-time">08:00 - 16:00</span></td>
+                                    <td><span class="badge status-incident">Incidencia</span></td>
+                                    <td class="text-danger">Unidad en revisión</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card schedule-card">
+                    <div class="card-header-container">
+                        <h3>Horarios del Día</h3>
+                        <div class="select-wrapper">
+                            <span class="select-label">Mayo <i data-lucide="chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="schedule-timeline">
+                        <div class="timeline-row">
+                            <div class="timeline-date">
+                                <span class="day-num">08</span>
+                                <span class="day-name">Lun</span>
+                            </div>
+                            <div class="timeline-events">
+                                <div class="event-block event-lime">
+                                    <div class="event-title">Ruta Centro-Aeropuerto</div>
+                                    <div class="event-time">6:00 - 14:00</div>
+                                </div>
+                                <div class="event-block event-purple">
+                                    <div class="event-title">Libertad-Zaragoza</div>
+                                    <div class="event-time">7:00 - 15:00</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="timeline-date">
+                                <span class="day-num">09</span>
+                                <span class="day-name">Mar</span>
+                            </div>
+                            <div class="timeline-events">
+                                <div class="event-block event-slate">
+                                    <div class="event-title">Circuito </div>
+                                    <div class="event-time">8:00 - 16:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Rutas - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="rutas.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
+                </div>
+                <nav class="nav-menu">
+                    <a href="../dashboard/dashboard.html" class="nav-item" title="Dashboard"><i data-lucide="layout-dashboard"></i></a>
+                    <a href="../mapa/mapa.html" class="nav-item" title="Mapa"><i data-lucide="map"></i></a>
+                    <a href="rutas.html" class="nav-item active" title="Rutas"><i data-lucide="route"></i></a>
+                    <a href="../choferes/choferes.html" class="nav-item" title="Choferes"><i data-lucide="users"></i></a>
+                    <a href="../horarios/horarios.html" class="nav-item" title="Horarios"><i data-lucide="calendar"></i></a>
+                </nav>
+            </div>
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item" title="Configuración"><i data-lucide="settings"></i></a>
+                <button class="nav-item logout-btn" title="Cerrar Sesión"><i data-lucide="log-out"></i></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Gestión de Rutas</h1>
+                    <p class="subtitle" id="routesCountSubtitle">5 rutas registradas</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge"></span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item warning">
+                                <i data-lucide="clock" class="item-icon"></i>
+                                <div><strong>Centro:</strong> Retraso de 15 min.</div>
+                            </div>
+                            <div class="dropdown-item danger">
+                                <i data-lucide="alert-triangle" class="item-icon"></i>
+                                <div><strong>Circuito:</strong> Unidad fuera de servicio.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Carolina Soto</span>
+                                <span class="profile-role">Encargada</span>
+                            </div>
+                            <div class="avatar">CS</div>
+                        </div>
+                        <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-user-info">
+                                <strong>Carolina Soto</strong>
+                                <span>carolina.soto@movilidadmochis.gob</span>
+                            </div>
+                            <hr>
+                            <a href="#" class="dropdown-link"><i data-lucide="user"></i> Mi Perfil</a>
+                            <a href="#" class="dropdown-link"><i data-lucide="sliders"></i> Configuración</a>
+                            <hr>
+                            <a href="#" class="dropdown-link logout-btn text-danger"><i data-lucide="log-out"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="quick-stats-grid">
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-purple"><i data-lucide="route"></i></div>
+                    <div><h3 id="statTotal">5</h3><p>Total Rutas</p></div>
+                </div>
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-green"><i data-lucide="check-circle"></i></div>
+                    <div><h3 id="statActive">4</h3><p>Rutas Activas</p></div>
+                </div>
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-red"><i data-lucide="x-circle"></i></div>
+                    <div><h3 id="statInactive">1</h3><p>Rutas Inactivas</p></div>
+                </div>
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-blue"><i data-lucide="trending-up"></i></div>
+                    <div><h3 id="statPassengers">5,630</h3><p>Pasajeros/Día</p></div>
+                </div>
+            </section>
+
+            <section class="toolbar-card card">
+                <div class="search-box-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="mainSearchInput" placeholder="Buscar por ruta, colonia o trayecto...">
+                </div>
+                <div class="filters-row">
+                    <select id="statusFilter" class="filter-dropdown">
+                        <option value="all">Todos los Estados</option>
+                        <option value="Activa">Activas</option>
+                        <option value="Inactiva">Inactivas</option>
+                    </select>
+
+                    <select id="durationFilter" class="filter-dropdown">
+                        <option value="all">Cualquier duración</option>
+                        <option value="short">Menos de 30 min</option>
+                        <option value="medium">30-45 min</option>
+                        <option value="long">Más de 45 min</option>
+                    </select>
+
+                    <select id="passengerFilter" class="filter-dropdown">
+                        <option value="all">Todos los Pasajeros</option>
+                        <option value="high">Más de 1,000/día</option>
+                        <option value="mid">Más de 500/día</option>
+                    </select>
+
+                    <button id="clearFiltersBtn" class="btn btn-secondary hide">
+                        <i data-lucide="x"></i> Limpiar
+                    </button>
+                    
+                    <span class="results-counter" id="resultsCounter">Mostrando 5 de 5 rutas</span>
+                    
+                    <button id="openModalBtn" class="btn btn-primary add-route-btn">
+                        <i data-lucide="plus"></i> Nueva Ruta
+                    </button>
+                </div>
+            </section>
+
+            <section class="card table-card">
+                <div class="table-wrapper">
+                    <table class="custom-table" id="routesTable">
+                        <thead>
+                            <tr>
+                                <th>Ruta</th>
+                                <th>Trayecto</th>
+                                <th>Colonias Atravesadas</th>
+                                <th class="sortable" data-sort="passengers">Pasajeros <i data-lucide="chevrons-up-down" class="sort-ic"></i></th>
+                                <th class="sortable" data-sort="time">Tiempo <i data-lucide="chevrons-up-down" class="sort-ic"></i></th>
+                                <th class="sortable" data-sort="km">Km <i data-lucide="chevrons-up-down" class="sort-ic"></i></th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="routeModal">
+        <div class="modal-content-box">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nueva Ruta de Transporte</h2>
+                <button class="close-modal-btn" id="closeModalBtn"><i data-lucide="x"></i></button>
+            </div>
+            <form id="routeForm">
+                <input type="hidden" id="formRouteIndex" value="">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="routeId">Código de Ruta (Ej: L6)</label>
+                        <input type="text" id="routeId" required placeholder="L5">
+                    </div>
+                    <div class="form-group">
+                        <label for="routeName">Nombre de la Ruta</label>
+                        <input type="text" id="routeName" required placeholder="Cedros- Arboledas">
+                    </div>
+                    <div class="form-group-full">
+                        <label for="routeTrayecto">Trayecto de Operación</label>
+                        <input type="text" id="routeTrayecto" required placeholder="Centro- Mañanitas">
+                    </div>
+                    <div class="form-group-full">
+                        <label for="routeColonias">Colonias que pasa (separadas por comas)</label>
+                        <input type="text" id="routeColonias" required placeholder="Centro, Rosales, Las Fuentes">
+                    </div>
+                    <div class="form-group">
+                        <label for="routePassengers">Pasajeros estimados / día</label>
+                        <input type="number" id="routePassengers" required placeholder="1200">
+                    </div>
+                    <div class="form-group">
+                        <label for="routeTime">Duración del Viaje (minutos)</label>
+                        <input type="number" id="routeTime" required placeholder="45">
+                    </div>
+                    <div class="form-group">
+                        <label for="routeKm">Kilometraje de Ruta</label>
+                        <input type="number" step="0.1" id="routeKm" required placeholder="14.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="routeStops">Número de Paradas</label>
+                        <input type="number" id="routeStops" required placeholder="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="routeStatus">Estado Inicial</label>
+                        <select id="routeStatus">
+                            <option value="Activa">Activa</option>
+                            <option value="Inactiva">Inactiva</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelFormBtn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Ruta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+    <script src="rutas.js"></script>
+</body>
+</html>

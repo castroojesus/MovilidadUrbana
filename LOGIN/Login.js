@@ -1,68 +1,102 @@
-const form = document.querySelector(".form");
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
-const toggle = document.querySelector("#togglePassword");
-const pupil = document.querySelector("#pupil");
-const guestButton = document.querySelector(".guest-button");
+document.addEventListener("DOMContentLoaded", () => {
+    // Referencias de intercambio de formularios
+    const loginContainer = document.getElementById("loginContainer");
+    const registerContainer = document.getElementById("registerContainer");
+    const goToRegister = document.getElementById("goToRegister");
+    const goToLogin = document.getElementById("goToLogin");
 
-guestButton.addEventListener("click", () => {
-  alert("¡Bienvenido, usuario invitado!");
-});
+    // Formularios independientes
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
 
+    // Intercambio visual entre Login y Registro
+    goToRegister.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginContainer.classList.add("hide");
+        registerContainer.classList.remove("hide");
+    });
 
-form.addEventListener("submit",(e) => {
-  e.preventDefault();
-  const emailValue = email.value.trim();
-  const passwordValue = password.value.trim();
-  if(emailValue===""){
-    alert("El campo de correo electrónico no puede estar vacío.");
-    return;
-  }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)){
-    alert("Por favor, ingresa un correo electrónico válido.");
-    return;
-  }
-  if(passwordValue===""){
-    alert("El campo de contraseña no puede estar vacío.");
-    return;
-  }
+    goToLogin.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerContainer.classList.add("hide");
+        loginContainer.classList.remove("hide");
+    });
 
-  if(passwordValue.length < 6){
-    alert("La contraseña debe tener al menos 6 caracteres.");
-    return;
-  }
+    // Control de visibilidad de contraseñas (ojito)
+    document.querySelectorAll(".toggle-pass").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const input = btn.parentElement.querySelector("input");
+            const icon = btn.querySelector("i");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.setAttribute("data-lucide", "eye-off");
+            } else {
+                input.type = "password";
+                icon.setAttribute("data-lucide", "eye");
+            }
+            lucide.createIcons();
+        });
+    });
 
-  if(!/[A-Z]/.test(passwordValue)){
-    alert("La contraseña debe contener al menos una letra mayúscula.");
-    return;
-  }
+    // Petición de Registro
+    registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("regName").value.trim();
+        const correo = document.getElementById("regEmail").value.trim();
+        const contrasena = document.getElementById("regPassword").value.trim();
 
-  if(!/[0-9]/.test(passwordValue)){
-    alert("La contraseña debe contener al menos un número.");
-    return;
-  }
+        try {
+            const respuesta = await fetch("http://localhost:3000/api/registrar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nombre, correo, contrasena })
+            });
 
-    alert("¡Inicio de sesión exitoso!");
-});
+            const resultado = await respuesta.json();
 
+            if (respuesta.ok) {
+                alert(resultado.mensaje);
+                registerForm.reset();
+                goToLogin.click();
+            } else {
+                alert(resultado.error);
+            }
+        } catch (err) {
+            alert("Error al conectar con el servidor backend.");
+        }
+    });
 
+    // Petición de Login con Redirección por Rol
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const correo = document.getElementById("email").value.trim();
+        const contrasena = document.getElementById("password").value.trim();
 
-let open = false;
+        try {
+            const respuesta = await fetch("http://localhost:3000/api/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ correo, contrasena })
+            });
 
-toggle.addEventListener("click", () => {
-  open = !open;
+            const resultado = await respuesta.json();
 
-  if (open) {
-    password.type = "text";
-
-    // ojo abierto
-    pupil.style.transform = "scale(1.4)";
-    pupil.style.opacity = "1";
-  } else {
-    password.type = "password";
-
-    // ojo cerrado (mini efecto)
-    pupil.style.transform = "scale(0.3)";
-    pupil.style.opacity = "0.5";
-  }
+            if (respuesta.ok) {
+                alert("¡Bienvenido de nuevo, " + resultado.nombre + "!");
+                
+                // REDIRECCIÓN INTELIGENTE SEGÚN EL ROL DE MYSQL
+                if (resultado.rol === "admin") {
+                    window.location.href = "../dashboard/dashboard.html";
+                } else if (resultado.rol === "chofer") {
+                    window.location.href = "../UIchof/index.html";
+                } else {
+                    window.location.href = "../Pasajero/Inicio/inicio.html"; // Pasajero común
+                }
+            } else {
+                alert(resultado.error);
+            }
+        } catch (err) {
+            alert("Error al conectar con el servidor backend.");
+        }
+    });
 });

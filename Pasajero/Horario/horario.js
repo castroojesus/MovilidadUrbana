@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.addEventListener("click", (e) => {
             e.preventDefault();
             if (confirm("¿Está seguro de que desea cerrar la sesión de pasajero?")) {
-                window.location.href = "../login/login.html";
+                window.location.href = "../../LOGIN/Login.html";
             }
         });
     }

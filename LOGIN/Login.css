@@ -311,3 +311,8 @@ body.dark-mode .social-button {
     width: 16px;
     height: 16px;
 }
+
+/* Utilidad para alternar los contenedores de Login y Registro */
+.container.hide {
+    display: none !important;
+}

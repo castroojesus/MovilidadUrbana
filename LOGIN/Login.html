@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Movilidad Urbana</title>
+    <title>Acceso - Movilidad Urbana</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="Login.css">
 </head>
 <body>
     <div class="login-wrapper">
-        <div class="container">
+        <div class="container" id="loginContainer">
             <div class="heading-group">
                 <div class="logo-container">
                     <i data-lucide="bus" class="logo-icon"></i>
@@ -19,50 +19,66 @@
                 
             </div>
 
-            <form action="" class="form">
+            <form class="form" id="loginForm">
+    <div class="input-group">
+        <label for="email"><i data-lucide="mail"></i> Correo electrónico</label>
+        <input required class="input" type="email" id="email" placeholder="ejemplo@correo.com">
+    </div>
+
+    <div class="input-group">
+        <label for="password"><i data-lucide="lock"></i> Contraseña</label>
+        <div class="password-container">
+            <input required class="input" type="password" id="password" placeholder="••••••••">
+            <span class="eye-icon toggle-pass"><i data-lucide="eye"></i></span>
+        </div>
+    </div>
+
+                <div class="meta-form-row">
+                    <span class="forgot-password"><a href="#" id="goToRegister">¿No tienes cuenta? Regístrate aquí</a></span>
+                </div>
+
+                <button type="submit" class="login-button">
+                    <i data-lucide="log-out"></i> Iniciar Sesión
+                </button>
+            </form>
+        </div>
+
+        <div class="container hide" id="registerContainer">
+            <div class="heading-group">
+                <div class="logo-container">
+                    <i data-lucide="user-plus" class="logo-icon"></i>
+                </div>
+                <h1>Crear Cuenta</h1>
+                <p class="subtitle">Registra tus datos en el sistema</p>
+            </div>
+
+            <form class="form" id="registerForm">
                 <div class="input-group">
-                    <label for="email"><i data-lucide="mail"></i> Correo electrónico</label>
-                    <input required class="input" type="email" name="email" id="email" placeholder="ejemplo@correo.com">
+                    <label for="regName"><i data-lucide="user"></i> Nombre Completo</label>
+                    <input required class="input" type="text" id="regName" placeholder="Jesús Alfonso">
                 </div>
 
                 <div class="input-group">
-                    <label for="password"><i data-lucide="lock"></i> Contraseña</label>
+                    <label for="regEmail"><i data-lucide="mail"></i> Correo electrónico</label>
+                    <input required class="input" type="email" id="regEmail" placeholder="ejemplo@correo.com">
+                </div>
+
+                <div class="input-group">
+                    <label for="regPassword"><i data-lucide="lock"></i> Contraseña</label>
                     <div class="password-container">
-                        <input required class="input" type="password" id="password" placeholder="••••••••">
-                        <span id="togglePassword" class="eye-icon">
-                            <i data-lucide="eye" id="eyeIcon"></i>
-                        </span>
+                        <input required class="input" type="password" id="regPassword" placeholder="••••••••">
+                        <span class="eye-icon toggle-pass"><i data-lucide="eye"></i></span>
                     </div>
                 </div>
 
                 <div class="meta-form-row">
-                    <span class="forgot-password"><a href="#">¿Olvidaste tu contraseña?</a></span>
+                    <span class="forgot-password"><a href="#" id="goToLogin">¿Ya tienes cuenta? Inicia sesión</a></span>
                 </div>
 
-                <button type="submit" class="login-button">
-                    <i data-lucide="log-in"></i> Iniciar Sesión
-                </button>
-                
-                <button type="button" class="guest-button">
-                    <i data-lucide="user-check"></i> Entrar como Invitado
+                <button type="submit" class="login-button" style="background-color: var(--accent-green);">
+                    <i data-lucide="check"></i> Registrarme
                 </button>
             </form>
-
-            <div class="social-account-container">
-                <span class="title">O ingresa con tus redes</span>
-                <div class="social-buttons">
-                    <button class="social-button google" title="Acceder con Google">
-                        <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 488 512">
-                            <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
-                        </svg>
-                    </button>
-                    <button class="social-button apple" title="Acceder con Apple">
-                        <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                            <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-48-20.7-77.5-20.7-39.3 0-82.3 22.4-102.4 57.3-40.6 70.4-10.5 174.8 29 231.4 19.3 27.7 42.1 58.7 72.1 57.5 29.2-1.2 40.3-18.9 75.5-18.9 35.1 0 45.4 18.9 75.5 18.3 30.6-.6 50.4-28.3 69.6-56.3 22.1-32.3 31.2-63.5 31.6-65.1-1.1-.4-62.4-24-63-95.4zm-48.5-219.9c16.2-19.6 27.1-46.9 24.1-74.1-23.3 1-51.5 15.5-68.2 35.2-14.7 17.1-27.5 44.9-24.1 71.7 25.9 2 52-13.2 68.2-32.8z"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 

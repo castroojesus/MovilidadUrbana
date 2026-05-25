@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.onclick = (e) => {
             e.preventDefault();
             if (confirm('¿Está seguro de que desea cerrar la sesión de encargado de movilidad?')) {
-                window.location.href = '../login/login.html';
+                window.location.href = '../../LOGIN/Login.html';
             }
         };
     });

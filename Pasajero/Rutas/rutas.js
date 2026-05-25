@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
             if(confirm("¿Seguro que desea cerrar sesión del panel de rutas?")) {
-                window.location.href = "../login/login.html";
+                window.location.href = "../../LOGIN/Login.html";
             }
         });
     });

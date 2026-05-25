@@ -3,116 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Reports</title>
-    <link rel="stylesheet" href="reportes.css">
-    <!-- Iconos Lucide -->
+    <title>Reportar Incidente - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="reportes.css">
 </head>
 <body>
-
-    <div class="container">
-        <!-- Sidebar -->
+    <div class="app-container">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="icon-box"><i data-lucide="bus"></i></div>
-                <div>
-                    <h1>Movilidad Urbana</h1>
-                    <p>Sistema de Transporte</p>
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
                 </div>
+
+                <nav class="nav-menu">
+                    <a href="../Inicio/inicio.html" class="nav-item" title="Inicio">
+                        <i data-lucide="home"></i>
+                    </a>
+                    
+                    <a href="../Mapa/Mapa.html" class="nav-item" title="Mapa">
+                        <i data-lucide="map"></i>
+                    </a>
+                    
+                    <a href="../Rutas/rutas.html" class="nav-item" title="Rutas">
+                        <i data-lucide="git-merge"></i>
+                    </a>
+                    
+                    <a href="../Horario/horario.html" class="nav-item" title="Horarios">
+                        <i data-lucide="clock"></i>
+                    </a>
+                    
+                    <a href="../Planificador/planificador.html" class="nav-item" title="Planificador">
+                        <i data-lucide="navigation"></i>
+                    </a>
+                    
+                    <a href="../Favoritos/favoritos.html" class="nav-item" title="Favoritos">
+                        <i data-lucide="star"></i>
+                    </a>
+                    
+                    <a href="#" class="nav-item active" title="Reportar">
+                        <i data-lucide="alert-circle"></i>
+                    </a>
+                </nav>
             </div>
-
-            <div class="user-card">
-                <div class="avatar"><i data-lucide="user"></i></div>
-                <div>
-                    <h3>Jesus Alfonso</h3>
-                    <p>Pasajero</p>
-                </div>
-            </div>
-
-            <nav class="menu">
-                <small>MENÚ</small>
-                <ul>
-                    <li>
-                        <a href="../Inicio/inicio.html"><i data-lucide="home"></i> Inicio </a>
-                    </li>
-                    <li>
-                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
-                    </li>
-                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
-                    <li >
-                        <a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a>
-                    </li>
-                    <li>
-                        <a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a>
-                    </li>
-                    <li>
-                        <a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a>
-                    </li>
-                    <li class ="active">
-                        <a href="#"><i data-lucide="alert-circle"></i> Reportar<span class="chevron">></span></a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="logout">
-                <i data-lucide="log-out"></i> Cerrar Sesión
+            
+            <div class="sidebar-bottom">
+                <button class="logout-btn" id="logoutBtn" title="Cerrar Sesión">
+                    <i data-lucide="log-out"></i>
+                </button>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="content">
-    <div id="main-report-container">
-        <section class="report-card">
-            <h1>Reportar Incidencia</h1>
-            
-            <p class="label-text">Tipo de incidencia</p>
-            <div class="incident-grid">
-                <div class="incident-option" data-type="Unidad llena">
-                    <i data-lucide="bus"></i>
-                    <span>Unidad llena</span>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Reportar Problema</h1>
+                    <div class="header-welcome-group">
+                        <span class="welcome-top-text">Ayúdanos a mejorar el servicio,</span>
+                        <h2 class="welcome-user-heading">Jesús Alfonso</h2>
+                    </div>
                 </div>
-                <div class="incident-option" data-type="No se detuvo">
-                    <i data-lucide="info"></i>
-                    <span>No se detuvo</span>
-                </div>
-                <div class="incident-option" data-type="Accidente">
-                    <i data-lucide="alert-triangle"></i>
-                    <span>Accidente</span>
-                </div>
-                <div class="incident-option" data-type="Queja general">
-                    <i data-lucide="file-text"></i>
-                    <span>Queja general</span>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>Ruta afectada</label>
-                <select id="ruta-select">
-                    <option value="" disabled selected>Selecciona una ruta</option>
+               
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label active"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label"><i data-lucide="sun"></i></span>
+                    </div>
                     
-                </select>
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge">4</span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item success">La Línea L1 se encuentra operando sin demoras.</div>
+                            <div class="dropdown-item warning">Alerta: Línea L2 presenta un retraso menor.</div>
+                            <div class="dropdown-item danger">Actualización de mapas completada con éxito.</div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Jesús Alfonso</span>
+                                <span class="profile-role">Pasajero</span>
+                            </div>
+                            <div class="avatar">JA</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="report-main-box" id="main-report-container">
+                <section class="section-container">
+                    <div class="panel-header">
+                        <i data-lucide="alert-triangle" class="alert-icon"></i>
+                        <h3>¿Qué tipo de problema sucedió?</h3>
+                    </div>
+
+                    <div class="incident-grid">
+                        <div class="incident-option" data-type="Retraso masivo">
+                            <i data-lucide="clock"></i>
+                            <span>Retraso masivo</span>
+                        </div>
+                        <div class="incident-option" data-type="Unidad llena">
+                            <i data-lucide="users"></i>
+                            <span>Unidad llena</span>
+                        </div>
+                        <div class="incident-option" data-type="No se detuvo">
+                            <i data-lucide="info"></i>
+                            <span>No se detuvo</span>
+                        </div>
+                        <div class="incident-option" data-type="Accidente">
+                            <i data-lucide="shield-alert"></i>
+                            <span>Accidente</span>
+                        </div>
+                        <div class="incident-option" data-type="Queja general">
+                            <i data-lucide="file-text"></i>
+                            <span>Queja general</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ruta-select"><i data-lucide="git-merge"></i> Línea afectada</label>
+                        <select id="ruta-select">
+                            <option value="" disabled selected>Selecciona una ruta de Los Mochis</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion"><i data-lucide="message-square"></i> Detalles o comentarios adicionales <span>(opcional)</span></label>
+                        <textarea id="descripcion" placeholder="Platícanos brevemente qué sucedió con la unidad..."></textarea>
+                    </div>
+
+                    <button id="btnEnviar" class="btn-submit-report" disabled>
+                        <i data-lucide="send"></i> Enviar Reporte de Incidente
+                    </button>
+                </section>
+
+                <div class="info-note-box">
+                    <p><strong>Nota importante:</strong> Tus reportes son completamente anónimos y se envían directamente al panel de control de los encargados para aplicar mejoras logísticas en las líneas de transporte urbano.</p>
+                </div>
             </div>
-
-            <div class="input-group">
-                <label>Descripción <span>(opcional)</span></label>
-                <textarea id="descripcion" placeholder="Describe lo que sucedió..."></textarea>
-            </div>
-
-            <button id="btnEnviar" class="btn-submit" disabled>Enviar reporte</button>
-        </section>
-
-        <div class="info-note">
-            <p><strong>Nota:</strong> Los reportes ayudan a mejorar el servicio. Todos los reportes son revisados por el equipo de encargados.</p>
-        </div>
-    </div>
-</main>
+        </main>
     </div>
 
     <script src="reportes.js"></script>
-     
-
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>

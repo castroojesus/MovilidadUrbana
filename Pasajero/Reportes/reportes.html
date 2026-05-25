@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Reports</title>
+    <link rel="stylesheet" href="reportes.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-box"><i data-lucide="bus"></i></div>
+                <div>
+                    <h1>Movilidad Urbana</h1>
+                    <p>Sistema de Transporte</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar"><i data-lucide="user"></i></div>
+                <div>
+                    <h3>Jesus Alfonso</h3>
+                    <p>Pasajero</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <small>MENÚ</small>
+                <ul>
+                    <li>
+                        <a href="../Inicio/inicio.html"><i data-lucide="home"></i> Inicio </a>
+                    </li>
+                    <li>
+                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
+                    </li>
+                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
+                    <li >
+                        <a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a>
+                    </li>
+                    <li>
+                        <a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a>
+                    </li>
+                    <li>
+                        <a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a>
+                    </li>
+                    <li class ="active">
+                        <a href="#"><i data-lucide="alert-circle"></i> Reportar<span class="chevron">></span></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="logout">
+                <i data-lucide="log-out"></i> Cerrar Sesión
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+    <div id="main-report-container">
+        <section class="report-card">
+            <h1>Reportar Incidencia</h1>
+            
+            <p class="label-text">Tipo de incidencia</p>
+            <div class="incident-grid">
+                <div class="incident-option" data-type="Unidad llena">
+                    <i data-lucide="bus"></i>
+                    <span>Unidad llena</span>
+                </div>
+                <div class="incident-option" data-type="No se detuvo">
+                    <i data-lucide="info"></i>
+                    <span>No se detuvo</span>
+                </div>
+                <div class="incident-option" data-type="Accidente">
+                    <i data-lucide="alert-triangle"></i>
+                    <span>Accidente</span>
+                </div>
+                <div class="incident-option" data-type="Queja general">
+                    <i data-lucide="file-text"></i>
+                    <span>Queja general</span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Ruta afectada</label>
+                <select id="ruta-select">
+                    <option value="" disabled selected>Selecciona una ruta</option>
+                    
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Descripción <span>(opcional)</span></label>
+                <textarea id="descripcion" placeholder="Describe lo que sucedió..."></textarea>
+            </div>
+
+            <button id="btnEnviar" class="btn-submit" disabled>Enviar reporte</button>
+        </section>
+
+        <div class="info-note">
+            <p><strong>Nota:</strong> Los reportes ayudan a mejorar el servicio. Todos los reportes son revisados por el equipo de encargados.</p>
+        </div>
+    </div>
+</main>
+    </div>
+
+    <script src="reportes.js"></script>
+     
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

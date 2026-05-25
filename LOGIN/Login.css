@@ -1,3 +1,4 @@
+/*caja de login*/
 .container {
     width: 100%;
     
@@ -17,7 +18,7 @@
 }
 
 
-
+/*cuerpo de la pagina*/
 body {
   margin: 0;
   background-color: rgb(169, 169, 169);
@@ -27,6 +28,7 @@ body {
   align-items: center;      /* centra vertical */
 }
 
+/*titulo de la pagina*/
 .heading {
   text-align:center;
   margin-top: 30px;
@@ -42,6 +44,7 @@ body {
   
 }
 
+/*inputs de usuario y contraseña*/
 .form .input {
   width: 90%;
   display:block;
@@ -55,10 +58,11 @@ body {
   border-inline: 2px solid transparent;
 }
 
+/*contenedor del input de contraseña para posicionar el icono del ojo*/
 .eye-icon {
   position: absolute;
-  right: 110px;
-  top: 49%;
+  left: 1010px;
+  top: 46%;
   transform: translateY(-50%);
   cursor: pointer;
   color: #888;
@@ -74,6 +78,7 @@ body {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/*estilos para pantallas pequeñas*/
 @media (max-width: 600px) {
 
   .container {
@@ -114,7 +119,7 @@ body {
   .eye-icon {
     position: absolute;
   left: 250px;
-  top: 49%;
+  top: 46%;
   transform: translateY(-50%);
     width: 20px;
     height: 20px;
@@ -165,12 +170,36 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+.form .guest-button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(45deg, rgb(61, 61, 61) 0%, rgb(23, 23, 23) 100%);
+  color: white;
+  padding-block: 15px;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: rgba(209, 231, 241, 0.878) 0px 20px 10px -15px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
 .form .login-button:hover {
   transform: scale(1.03);
   box-shadow: rgba(209, 231, 241, 0.878) 0px 23px 10px -20px;
 }
 
+.form .guest-button:hover {
+  transform: scale(1.03);
+  box-shadow: rgba(209, 231, 241, 0.878) 0px 23px 10px -20px;
+}
+
 .form .login-button:active {
+  transform: scale(0.95);
+  box-shadow: rgba(209, 231, 241, 0.878) 0px 15px 10px -10px;
+}
+
+.form .guest-button:active {
   transform: scale(0.95);
   box-shadow: rgba(209, 231, 241, 0.878) 0px 15px 10px -10px;
 }

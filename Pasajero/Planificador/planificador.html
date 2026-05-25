@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Planner</title>
+    <link rel="stylesheet" href="planificador.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="icon-box"><i data-lucide="bus"></i></div>
+                <div>
+                    <h1>Movilidad Urbana</h1>
+                    <p>Sistema de Transporte</p>
+                </div>
+            </div>
+
+            <div class="user-card">
+                <div class="avatar"><i data-lucide="user"></i></div>
+                <div>
+                    <h3>Jesus Alfonso</h3>
+                    <p>Pasajero</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <small>MENÚ</small>
+                <ul>
+                    <li>
+                        <a href="../Inicio/inicio.html"><i data-lucide="home"></i> Inicio </a>
+                    </li>
+                    <li>
+                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
+                    </li>
+                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
+                    <li >
+                        <a href="../Horario/horario.html"><i data-lucide="clock"></i> Horarios</a>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i data-lucide="navigation"></i> Planificador<span class="chevron">></span></a>
+                    </li>
+                    <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
+                    <li>
+                        <a href="../Reportes/reportes.html"><i data-lucide="alert-circle"></i> Reportar</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="logout">
+                <i data-lucide="log-out"></i> Cerrar Sesión
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+    <!-- Buscador -->
+    <section class="planner-card">
+        <h2>Planificador de Rutas</h2>
+        <div class="input-group">
+            <label>Origen</label>
+            <div class="select-wrapper">
+                <i data-lucide="map-pin" class="icon-input"></i>
+                <select id="origen">
+                    <option value="" disabled selected>Selecciona origen</option>
+                    <option value="Plaza Central">Plaza Central</option>
+                    <option value="Av. Libertad">Av. Libertad</option>
+                    <option value="Hospital General">Hospital General</option>
+                    <option value="Aeropuerto Internacional">Aeropuerto Internacional</option>
+                    <option value="Universidad">Universidad</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Destino</label>
+            <div class="select-wrapper">
+                <i data-lucide="navigation" class="icon-input"></i>
+                <select id="destino">
+                    <option value="" disabled selected>Selecciona destino</option>
+                    <option value="Plaza Central">Plaza Central</option>
+                    <option value="Av. Libertad">Av. Libertad</option>
+                    <option value="Hospital General">Hospital General</option>
+                    <option value="Aeropuerto Internacional">Aeropuerto Internacional</option>
+                    <option value="Universidad">Universidad</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="btnBuscar" class="btn-primary">Buscar rutas</button>
+    </section>
+
+    
+    <section id="resultados" class="results-container">
+        
+    </section>
+
+    
+    <section id="opcionesDetalle" class="options-container">
+        
+    </section>
+</main>
+    </div>
+
+    <script src="planificador.js"></script>
+     
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

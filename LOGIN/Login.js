@@ -3,6 +3,11 @@ const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const toggle = document.querySelector("#togglePassword");
 const pupil = document.querySelector("#pupil");
+const guestButton = document.querySelector(".guest-button");
+
+guestButton.addEventListener("click", () => {
+  alert("¡Bienvenido, usuario invitado!");
+});
 
 
 form.addEventListener("submit",(e) => {

@@ -3,156 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Schedule</title>
-    <link rel="stylesheet" href="horario.css">
-    <!-- Iconos Lucide -->
+    <title>Horarios - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="horario.css">
 </head>
 <body>
-
-    <div class="container">
-        <!-- Sidebar -->
+    <div class="app-container">
         <aside class="sidebar">
-            <div class="brand">
-                <div class="icon-box"><i data-lucide="bus"></i></div>
-                <div>
-                    <h1>Movilidad Urbana</h1>
-                    <p>Sistema de Transporte</p>
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
                 </div>
+
+                <nav class="nav-menu">
+                    <a href="../Inicio/inicio.html" class="nav-item" title="Inicio">
+                        <i data-lucide="home"></i>
+                    </a>
+                    
+                    <a href="../Mapa/Mapa.html" class="nav-item" title="Mapa">
+                        <i data-lucide="map"></i>
+                    </a>
+                    
+                    <a href="../Rutas/rutas.html" class="nav-item" title="Rutas">
+                        <i data-lucide="git-merge"></i>
+                    </a>
+                    
+                    <a href="#" class="nav-item active" title="Horarios">
+                        <i data-lucide="clock"></i>
+                    </a>
+                    
+                    <a href="../Planificador/planificador.html" class="nav-item" title="Planificador">
+                        <i data-lucide="navigation"></i>
+                    </a>
+                    
+                    <a href="../Favoritos/favoritos.html" class="nav-item" title="Favoritos">
+                        <i data-lucide="star"></i>
+                    </a>
+                    
+                    <a href="../Reportes/reportes.html" class="nav-item" title="Reportar">
+                        <i data-lucide="alert-circle"></i>
+                    </a>
+                </nav>
             </div>
-
-            <div class="user-card">
-                <div class="avatar"><i data-lucide="user"></i></div>
-                <div>
-                    <h3>Jesus Alfonso</h3>
-                    <p>Pasajero</p>
-                </div>
-            </div>
-
-            <nav class="menu">
-                <small>MENÚ</small>
-                <ul>
-                    <li>
-                        <a href="../Inicio/inicio.html"><i data-lucide="home"></i> Inicio </a>
-                    </li>
-                    <li>
-                        <a href="../Mapa/Mapa.html"><i data-lucide="map"></i> Mapa</a>
-                    </li>
-                    <li><a href="../Rutas/rutas.html"><i data-lucide="route"></i> Rutas</a></li>
-                    <li class="active">
-                        <a href="#"><i data-lucide="clock"></i> Horarios<span class="chevron">></span></a>
-                    </li>
-                    <li><a href="../Planificador/planificador.html"><i data-lucide="navigation"></i> Planificador</a></li>
-                    <li><a href="../Favoritos/favoritos.html"><i data-lucide="star"></i> Favoritos</a></li>
-                    <li>
-                        <a href="../Reportes/reportes.html"><i data-lucide="alert-circle"></i> Reportar</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="logout">
-                <i data-lucide="log-out"></i> Cerrar Sesión
+            
+            <div class="sidebar-bottom">
+                <button class="logout-btn" id="logoutBtn" title="Cerrar Sesión">
+                    <i data-lucide="log-out"></i>
+                </button>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="content">
-    <header class="top-bar">
-        <h2>Horarios</h2>
-        <div class="top-actions">
-            <button class="icon-btn"><i data-lucide="bell"></i></button>
-            <button class="user-btn"><i data-lucide="user"></i> Pasajero</button>
-        </div>
-    </header>
-
-    <section class="horarios-section">
-        <h1>Horarios</h1>
-        <p class="subtitle">Consulta los horarios de salida y llegada de cada ruta</p>
-
-        
-        <div class="filter-container">
-            <div class="filter-row">
-                <i data-lucide="filter"></i> <span>Filtrar:</span>
-                <div class="filter-pills">
-                    <button class="pill active" data-filter="all">Todas las rutas</button>
-                    <button class="pill" data-filter="L1">L1</button>
-                    <button class="pill" data-filter="L2">L2</button>
-                    <button class="pill" data-filter="L3">L3</button>
-                    <button class="pill" data-filter="L9">L9</button>
-                    <button class="pill" data-filter="L10">L10</button>
-                </div>
-            </div>
-            
-            <div class="legend-row">
-                <span class="dot-item"><span class="dot green"></span> A tiempo</span>
-                <span class="dot-item"><span class="dot orange"></span> Retrasado</span>
-                <span class="dot-item"><span class="dot red"></span> Cancelado</span>
-            </div>
-        </div>
-
-        
-        <div class="schedule-table">
-            <div class="table-header">
-                <span class="col-ruta">RUTA</span>
-                <span class="col-trayecto">TRAYECTO</span>
-                <span class="col-horario">HORARIO</span>
-                <span class="col-estado">ESTADO</span>
-            </div>
-
-            <div class="table-body" id="scheduleBody">
-                
-                <div class="table-row" data-ruta="L2">
-                    <div class="col-ruta"><div class="badge l2">L2</div></div>
-                    <div class="col-trayecto">
-                        <strong>Sur - Universidad</strong>
-                        <p>Terminal Sur &rarr; Ciudad Universitaria</p>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Horarios y Despachos</h1>
+                    <div class="header-welcome-group">
+                        <span class="welcome-top-text">Consulta las salidas de,</span>
+                        <h2 class="welcome-user-heading">Jesús Alfonso</h2>
                     </div>
-                    <div class="col-horario"><i data-lucide="clock"></i> 05:30 &rarr; 06:00</div>
-                    <div class="col-estado"><span class="tag-status success">A tiempo</span></div>
                 </div>
+               
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label active"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label"><i data-lucide="sun"></i></span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge">4</span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item success">La Línea L1 se encuentra operando sin demoras.</div>
+                            <div class="dropdown-item warning">Alerta: Línea L2 presenta un retraso menor.</div>
+                            <div class="dropdown-item danger">Actualización de mapas completada con éxito.</div>
+                        </div>
+                    </div>
 
-                
-                <div class="table-row" data-ruta="L9">
-                    <div class="col-ruta"><div class="badge l9">L9</div></div>
-                    <div class="col-trayecto">
-                        <strong>Terminal Este - Universidad</strong>
-                        <p>Terminal Este &rarr; Ciudad Universitaria</p>
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Jesús Alfonso</span>
+                                <span class="profile-role">Pasajero</span>
+                            </div>
+                            <div class="avatar">JA</div>
+                        </div>
                     </div>
-                    <div class="col-horario"><i data-lucide="clock"></i> 05:45 &rarr; 06:17</div>
-                    <div class="col-estado"><span class="tag-status success">A tiempo</span></div>
                 </div>
-                
-                
-                <div class="table-row" data-ruta="L1">
-                    <div class="col-ruta"><div class="badge l1">L1</div></div>
-                    <div class="col-trayecto">
-                        <strong>Centro - Aeropuerto</strong>
-                        <p>Plaza Central &rarr; Aeropuerto</p>
-                    </div>
-                    <div class="col-horario"><i data-lucide="clock"></i> 06:00 &rarr; 06:45</div>
-                    <div class="col-estado"><span class="tag-status warning">Retrasado</span></div>
-                </div>
+            </header>
 
-                <div class="table-row" data-ruta="L10">
-                    <div class="col-ruta"><div class="badge l10">L10</div></div>
-                    <div class="col-trayecto">
-                        <strong>Centro - Aeropuerto</strong>
-                        <p>Plaza Central &rarr; Aeropuerto</p>
+            <section class="pill-filters-wrapper">
+                <div class="pill-filters" id="pillsContainer">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
                     </div>
-                    <div class="col-horario"><i data-lucide="clock"></i> 06:00 &rarr; 06:45</div>
-                    <div class="col-estado"><span class="tag-status danger">Cancelado</span></div>
+            </section>
+
+            <div class="schedule-grid-list" id="scheduleContainer">
                 </div>
-            </div>
-        </div>
-    </section>
-</main>
+        </main>
     </div>
 
     <script src="horario.js"></script>
-     
-
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>

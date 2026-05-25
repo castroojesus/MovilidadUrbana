@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Horarios - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="horarios.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
+                </div>
+                <nav class="nav-menu">
+                    <a href="../dashboard/dashboard.html" class="nav-item" title="Dashboard"><i data-lucide="layout-dashboard"></i></a>
+                    <a href="../mapa/mapa.html" class="nav-item" title="Mapa"><i data-lucide="map"></i></a>
+                    <a href="../rutas/rutas.html" class="nav-item" title="Rutas"><i data-lucide="route"></i></a>
+                    <a href="../choferes/choferes.html" class="nav-item" title="Choferes"><i data-lucide="users"></i></a>
+                     <a href="../horarios/horarios.html" class="nav-item" title="Horarios"><i data-lucide="calendar"></i></a>
+                </nav>
+            </div>
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item" title="Configuración"><i data-lucide="settings"></i></a>
+                <button class="nav-item logout-btn" title="Cerrar Sesión"><i data-lucide="log-out"></i></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Gestión de Horarios</h1>
+                    <p class="subtitle" id="driversCountSubtitle">Monitoreo de salidas en tiempo real</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge"></span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item danger">
+                                <i data-lucide="alert-octagon" class="item-icon"></i>
+                                <div><strong>Retraso L1:</strong> Roberto Silva reporta tráfico.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Carolina Soto</span>
+                                <span class="profile-role">Encargada</span>
+                            </div>
+                            <div class="avatar">CS</div>
+                        </div>
+                        <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-user-info">
+                                <strong>Carolina Soto</strong>
+                                <span>carolina.soto@movilidadmochis.gob</span>
+                            </div>
+                            <hr>
+                            <a href="#" class="dropdown-link"><i data-lucide="user"></i> Mi Perfil</a>
+                            <a href="#" class="dropdown-link logout-btn text-danger"><i data-lucide="log-out"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="toolbar-card card">
+                <div class="filter-chips-label">Filtrar por ruta:</div>
+                <div class="chips-container" id="chipsContainer">
+                    <button class="chip-filter-btn active" data-route="Todas">Todas</button>
+                    <button class="chip-filter-btn" data-route="L1">L1</button>
+                    <button class="chip-filter-btn" data-route="L2">L2</button>
+                    <button class="chip-filter-btn" data-route="L3">L3</button>
+                    <button class="chip-filter-btn" data-route="L4">L4</button>
+                    <button class="chip-filter-btn" data-route="L5">L5</button>
+                </div>
+                <span class="results-counter" id="resultsCounter">Mostrando 12 salidas encontradas</span>
+            </section>
+
+            <div class="table-columns-header">
+                <div class="col-header col-ruta">Ruta</div>
+                <div class="col-header col-horario">Horario</div>
+                <div class="col-header col-chofer">Chofer</div>
+                <div class="col-header col-estado">Estado</div>
+                <div class="col-header col-acciones text-center">Acciones</div>
+            </div>
+
+            <section class="schedule-cards-stack" id="scheduleCardsStack">
+                </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="editScheduleModal">
+        <div class="modal-content-box">
+            <div class="modal-header">
+                <h2>Modificar Estado de Salida</h2>
+                <button class="close-modal-btn" id="closeModalBtn"><i data-lucide="x"></i></button>
+            </div>
+            <form id="editScheduleForm">
+                <input type="hidden" id="modalScheduleIndex">
+                <div class="form-group">
+                    <label for="modalStatusSelect">Cambiar Estado de Operación</label>
+                    <select id="modalStatusSelect" class="form-select">
+                        <option value="A tiempo">A tiempo</option>
+                        <option value="Retrasado">Retrasado</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary-flat" id="btnCancelModal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar Estado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="horarios.js"></script>
+</body>
+</html>

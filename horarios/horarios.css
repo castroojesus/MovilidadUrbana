@@ -1,0 +1,209 @@
+/* CSS RESET & VARIABLES (Opacas y Sólidas — Estilo Gestión de Choferes) */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-app: #ccc8e8;
+    --bg-sidebar: #1e1535;
+    --bg-sidebar-active: rgba(167, 139, 250, 0.3);
+    
+    /* Fondo opaco blanco puro para eliminar transparencias (Imagen 3) */
+    --bg-card: #ffffff; 
+    --bg-dropdown: #ffffff;
+    
+    --text-main: #1d1a30;
+    --text-muted: #5e597c;
+    
+    --accent-purple: #7c6fcd;
+    --accent-purple-dark: #6d28d9;
+    --accent-green: #22c55e;
+    --accent-orange: #f59e0b;
+    --accent-danger: #ef4444;
+    --accent-blue: #3b82f6;
+    
+    --border-color: rgba(29, 26, 48, 0.06);
+    --shadow-soft: 0 6px 20px rgba(29, 26, 48, 0.05);
+    --font-family: 'Nunito', sans-serif;
+
+    /* Badges de Ruta */
+    --l1: #7c6fcd;
+    --l2: #22c55e;
+    --l3: #f59e0b;
+    --l4: #ef4444;
+    --l5: #3b82f6;
+}
+
+body.dark-mode {
+    --bg-app: #121020;
+    --bg-card: #1e1b37;
+    --bg-dropdown: #1e1b37;
+    --text-main: #f7fafc;
+    --text-muted: #a0aec0;
+    --border-color: rgba(240, 239, 246, 0.08);
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container { display: flex; min-height: 100vh; }
+
+/* SIDEBAR REUTILIZADO SLIM */
+.sidebar {
+    width: 72px;
+    background-color: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-top { display: flex; flex-direction: column; align-items: center; gap: 35px; width: 100%; }
+.logo-container { width: 52px; height: 52px; background-color: var(--accent-purple-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.logo-icon { width: 26px !important; height: 26px !important; color: #ffffff !important; }
+.nav-menu { display: flex; flex-direction: column; gap: 16px; width: 100%; align-items: center; }
+.nav-item { width: 44px; height: 44px; border-radius: 50%; background: transparent; color: rgba(255, 255, 255, 0.45); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; text-decoration: none; border: none; }
+.nav-item:hover { background-color: rgba(255, 255, 255, 0.12); color: #ffffff; }
+.nav-item.active { background-color: var(--bg-sidebar-active); color: #ffffff !important; border-left: 3px solid #a78bfa; border-radius: 0 50% 50% 0; }
+.sidebar-bottom { display: flex; flex-direction: column; gap: 16px; }
+
+/* MAIN CONTENT */
+.main-content { margin-left: 72px; flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 20px; width: calc(100% - 72px); }
+
+/* TOPBAR */
+.topbar { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+body.dark-mode .topbar { background-color: #1e1535; padding: 16px 24px; border-radius: 16px; color: #ffffff; }
+.topbar-left h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+.topbar-left .subtitle { color: var(--text-muted); font-size: 14px; font-weight: 600; }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+
+/* Theme Toggle Pill */
+.theme-toggle { background-color: #1e1535; padding: 4px; border-radius: 30px; display: flex; cursor: pointer; align-items: center; gap: 4px; user-select: none; }
+.toggle-mode { padding: 6px 14px; font-size: 13px; font-weight: 700; border-radius: 20px; display: flex; align-items: center; gap: 6px; color: #a09cb5; }
+.toggle-mode.active { background-color: #ffffff; color: #1e1535; }
+body.dark-mode .toggle-mode.active { background-color: var(--accent-purple); color: #ffffff; }
+
+.icon-circle-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-main); display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; }
+.bell-badge { position: absolute; top: 12px; right: 13px; width: 8px; height: 8px; background-color: var(--accent-danger); border-radius: 50%; }
+
+.profile-trigger { display: flex; align-items: center; gap: 12px; padding: 4px 6px 4px 14px; border-radius: 30px; border: 1px solid var(--border-color); background-color: var(--bg-card); cursor: pointer; }
+.profile-info-text { display: flex; flex-direction: column; align-items: flex-end; }
+.profile-name { font-size: 14px; font-weight: 700; }
+.profile-role { font-size: 11px; color: var(--text-muted); }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: #6d28d9; color: #ffffff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+/* DROPDOWNS */
+.dropdown-menu { position: absolute; top: calc(100% + 10px); right: 0; background-color: var(--bg-dropdown); border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); display: none; flex-direction: column; width: 260px; z-index: 1000; overflow: hidden; }
+.dropdown-menu.show { display: flex !important; }
+.dropdown-header { padding: 12px 16px; font-weight: 800; border-bottom: 1px solid var(--border-color); }
+.dropdown-item { padding: 12px 16px; display: flex; gap: 10px; font-size: 13px; border-bottom: 1px solid rgba(0,0,0,0.02); color: var(--text-main); }
+.dropdown-link { padding: 12px 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.dropdown-link:hover { background-color: rgba(124,111,205,0.08); }
+hr { border: 0; border-top: 1px solid var(--border-color); }
+
+/* TOOLBAR & CHIPS FILTERS CARD */
+.toolbar-card { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.filter-chips-label { font-size: 14px; font-weight: 700; color: var(--text-muted); }
+.chips-container { display: flex; gap: 6px; }
+.chip-filter-btn { padding: 6px 16px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.02); border-radius: 20px; font-family: inherit; font-weight: 700; font-size: 13px; color: var(--text-main); cursor: pointer; transition: 0.2s; }
+body.dark-mode .chip-filter-btn { background: rgba(255,255,255,0.04); }
+.chip-filter-btn:hover { border-color: var(--accent-purple); }
+.chip-filter-btn.active { background-color: var(--bg-pill-dark); color: white; border-color: var(--bg-pill-dark); }
+body.dark-mode .chip-filter-btn.active { background-color: var(--accent-purple); border-color: var(--accent-purple); }
+.results-counter { font-size: 13px; color: var(--text-muted); font-weight: 700; margin-left: auto; }
+
+/* TARJETAS OPACAS SÓLIDAS GENERALES */
+.card { background-color: var(--bg-card); border-radius: 20px; padding: 18px 24px; box-shadow: var(--shadow-soft); border: 1px solid var(--border-color); }
+
+/* ENCABEZADOS SIMULADOS DE COLUMNA */
+.table-columns-header { display: flex; align-items: center; padding: 0 24px; margin-top: 10px; margin-bottom: -10px; }
+.col-header { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; }
+
+/* ANCHOS DE COLUMNAS COINCIDENTES PARA ALINEACIÓN */
+.col-ruta { width: 25%; }
+.col-horario { width: 20%; }
+.col-chofer { width: 25%; }
+.col-estado { width: 15%; }
+.col-acciones { width: 15%; }
+
+/* PILA DE TARJETAS HORIZONTALES (ESTILO CHOFERES) */
+.schedule-cards-stack { display: flex; flex-direction: column; gap: 10px; }
+.schedule-horizontal-card { display: flex; align-items: center; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.schedule-horizontal-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29, 26, 48, 0.08); }
+
+/* Bloque 1: Ruta Badge */
+.route-profile-cell { display: flex; align-items: center; gap: 14px; }
+.route-badge-circle { width: 36px; height: 36px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; flex-shrink: 0; }
+.route-badge-circle.l1 { background-color: var(--l1); }
+.route-badge-circle.l2 { background-color: var(--l2); }
+.route-badge-circle.l3 { background-color: var(--l3); }
+.route-badge-circle.l4 { background-color: var(--l4); }
+.route-badge-circle.l5 { background-color: var(--l5); }
+.route-meta-text strong { display: block; font-size: 14px; font-weight: 800; }
+.route-meta-text span { display: block; font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 1px; }
+
+/* Bloque 2: Horas conectadas */
+.time-connector-block { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; font-family: monospace; color: var(--text-main); }
+.time-connector-block i { color: var(--text-muted); width: 14px; height: 14px; }
+
+/* Bloque 3: Chofer Meta */
+.driver-profile-cell { display: flex; align-items: center; gap: 12px; }
+.driver-fallback-avatar { width: 34px; height: 34px; border-radius: 50%; background-color: rgba(124, 111, 205, 0.15); color: var(--accent-purple); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+body.dark-mode .driver-fallback-avatar { background-color: rgba(255,255,255,0.06); color: white; }
+.driver-meta-text strong { display: block; font-size: 14px; font-weight: 800; }
+.driver-meta-text span { display: block; font-size: 11px; color: var(--text-muted); font-weight: 600; }
+
+/* Bloque 4: Badges con punto brillante (Píldoras de Estado) */
+.status-pill-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; }
+.status-pill-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+.status-pill-badge.a-tiempo { background-color: rgba(34, 197, 94, 0.12); color: var(--accent-green); }
+.status-pill-badge.a-tiempo::before { background-color: var(--accent-green); }
+
+.status-pill-badge.retrasado { background-color: rgba(245, 158, 11, 0.12); color: var(--accent-orange); }
+.status-pill-badge.retrasado::before { background-color: var(--accent-orange); }
+
+.status-pill-badge.cancelado { background-color: rgba(239, 68, 68, 0.12); color: var(--accent-danger); }
+.status-pill-badge.cancelado::before { background-color: var(--accent-danger); }
+
+/* Bloque 5: Acciones Minimalistas */
+.actions-cell-inline { display: flex; gap: 6px; justify-content: center; }
+.action-minimal-btn { width: 32px; height: 32px; border-radius: 8px; border: none; background: rgba(0,0,0,0.03); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+body.dark-mode .action-minimal-btn { background: rgba(255,255,255,0.05); }
+.action-minimal-btn:hover { background-color: var(--accent-purple); color: white; }
+
+/* MODALES */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.45); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 2000; }
+.modal-overlay.open { display: flex; }
+.modal-content-box { background-color: var(--bg-dropdown); border-radius: 20px; width: 100%; max-width: 440px; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px; }
+.modal-header h2 { font-size: 18px; font-weight: 800; }
+.close-modal-btn { background: transparent; border: none; color: var(--text-main); cursor: pointer; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.form-select { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-color); background-color: rgba(0,0,0,0.02); color: var(--text-main); font-family: inherit; font-weight: 600; outline: none; }
+body.dark-mode .form-select { background-color: rgba(255,255,255,0.05); }
+.modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 14px; }
+
+/* UTILITIES & RESPONSIVE */
+.text-center { text-align: center !important; }
+@media (max-width: 900px) {
+    .table-columns-header { display: none; }
+    .schedule-horizontal-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
+    .col-ruta, .col-horario, .col-chofer, .col-estado, .col-acciones { width: 100%; }
+    .actions-cell-inline { justify-content: flex-start; width: 100%; border-top: 1px dashed var(--border-color); padding-top: 10px; }
+}

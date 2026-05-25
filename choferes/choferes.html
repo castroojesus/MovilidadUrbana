@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Choferes - Movilidad Urbana Mochis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="choferes.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
+                </div>
+                <nav class="nav-menu">
+                    <a href="../dashboard/dashboard.html" class="nav-item" title="Dashboard"><i data-lucide="layout-dashboard"></i></a>
+                    <a href="../mapa/mapa.html" class="nav-item" title="Mapa"><i data-lucide="map"></i></a>
+                    <a href="../rutas/rutas.html" class="nav-item" title="Rutas"><i data-lucide="route"></i></a>
+                    <a href="choferes.html" class="nav-item active" title="Choferes"><i data-lucide="users"></i></a>
+                    <a href="../horarios/horarios.html" class="nav-item" title="Horarios"><i data-lucide="calendar"></i></a>
+                </nav>
+            </div>
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item" title="Configuración"><i data-lucide="settings"></i></a>
+                <button class="nav-item logout-btn" title="Cerrar Sesión"><i data-lucide="log-out"></i></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1>Gestión de Choferes</h1>
+                    <p class="subtitle" id="driversCountSubtitle">4 choferes registrados</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+                    
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge"></span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones Recientes</div>
+                            <div class="dropdown-item warning">
+                                <i data-lucide="clock" class="item-icon"></i>
+                                <div><strong>Roberto S:</strong> Exceso de velocidad L1.</div>
+                            </div>
+                            <div class="dropdown-item danger">
+                                <i data-lucide="alert-triangle" class="item-icon"></i>
+                                <div><strong>Jorge H:</strong> Licencia próxima a vencer.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name">Carolina Soto</span>
+                                <span class="profile-role">Encargada</span>
+                            </div>
+                            <div class="avatar-initials">CS</div>
+                        </div>
+                        <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-user-info">
+                                <strong>Carolina Soto</strong>
+                                <span>carolina.soto@movilidadmochis.gob</span>
+                            </div>
+                            <hr>
+                            <a href="#" class="dropdown-link"><i data-lucide="user"></i> Mi Perfil</a>
+                            <a href="#" class="dropdown-link"><i data-lucide="sliders"></i> Configuración</a>
+                            <hr>
+                            <a href="#" class="dropdown-link logout-btn text-danger"><i data-lucide="log-out"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="quick-stats-grid">
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-purple"><i data-lucide="users"></i></div>
+                    <div><h3 id="statTotalDrivers">4</h3><p>Total Choferes</p></div>
+                </div>
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-green"><i data-lucide="activity"></i></div>
+                    <div><h3 id="statOnRoute">2</h3><p>En Ruta Ahora</p></div>
+                </div>
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-orange"><i data-lucide="trending-up"></i></div>
+                    <div><h3 id="statTotalTrips">15</h3><p>Viajes Hoy</p></div>
+                </div>
+                <div class="mini-stat-card">
+                    <div class="mini-icon bg-blue"><i data-lucide="star"></i></div>
+                    <div><h3 id="statAvgRating">4.6</h3><p>Rating Promedio</p></div>
+                </div>
+            </section>
+
+            <section class="toolbar-card card">
+                <div class="search-box-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="mainSearchInput" placeholder="Buscar chofer por nombre, licencia o ruta...">
+                </div>
+                <div class="filters-row">
+                    <select id="statusFilter" class="filter-dropdown">
+                        <option value="all">Todos los Estados</option>
+                        <option value="En ruta">En ruta</option>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+
+                    <select id="routeFilter" class="filter-dropdown">
+                        <option value="all">Todas las Rutas</option>
+                        <option value="L1">L1 Centro-Macapule</option>
+                        <option value="L2">L2 Centro-UAS</option>
+                        <option value="L3">L3 Centro-Toledo</option>
+                        <option value="L4">L4 Centro-Infonavit</option>
+                        <option value="L5">L5 Centro-Malvinas</option>
+                    </select>
+
+                    <select id="ratingFilter" class="filter-dropdown">
+                        <option value="all">Todos los Ratings</option>
+                        <option value="4.5">4.5+ ⭐</option>
+                        <option value="4.0">4.0+ ⭐</option>
+                        <option value="low">Menos de 4.0 ⭐</option>
+                    </select>
+
+                    <div class="view-toggle-buttons">
+                        <button id="viewGridBtn" class="toggle-btn active" title="Vista Tarjetas"><i data-lucide="layout-grid"></i></button>
+                        <button id="viewListBtn" class="toggle-btn" title="Vista Tabla"><i data-lucide="list"></i></button>
+                    </div>
+
+                    <span class="results-counter" id="resultsCounter">Mostrando 4 de 4 choferes</span>
+                    
+                    <button id="openAddModalBtn" class="btn btn-primary add-driver-btn">
+                        <i data-lucide="user-plus"></i> Agregar Chofer
+                    </button>
+                </div>
+            </section>
+
+            <section id="cardsViewContainer" class="drivers-cards-grid">
+                </section>
+
+            <section id="tableViewContainer" class="card table-card hide">
+                <div class="table-wrapper">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Chofer</th>
+                                <th>Licencia</th>
+                                <th>Contacto</th>
+                                <th>Ruta Asignada</th>
+                                <th>Turno</th>
+                                <th>Viajes Hoy</th>
+                                <th>Rating</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="driverModal">
+        <div class="modal-content-box">
+            <div class="modal-header">
+                <h2 id="modalTitle">Registrar Nuevo Chofer</h2>
+                <button class="close-modal-btn" id="closeModalBtn"><i data-lucide="x"></i></button>
+            </div>
+            <form id="driverForm">
+                <input type="hidden" id="formDriverId" value="">
+                
+                <div class="photo-upload-wrapper">
+                    <div class="preview-avatar-container">
+                        <img id="avatarPreviewImg" src="" alt="Preview" class="hide">
+                        <div id="avatarPreviewFallback" class="avatar-fallback-box">UP</div>
+                    </div>
+                    <div class="upload-controls">
+                        <label for="driverPhoto" class="btn-upload-label"><i data-lucide="camera"></i> Subir Foto</label>
+                        <input type="file" id="driverPhoto" accept="image/*">
+                        <p class="upload-tip">Formatos JPG, PNG. Máximo 2MB</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group-full">
+                        <label for="driverName">Nombre Completo *</label>
+                        <input type="text" id="driverName" required placeholder="Ej. Juan Carlos Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label for="driverPhone">Teléfono Móvil *</label>
+                        <input type="text" id="driverPhone" required placeholder="+52 668-123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="driverEmail">Correo Electrónico *</label>
+                        <input type="email" id="driverEmail" required placeholder="ejemplo@movilidad.mx">
+                    </div>
+                    <div class="form-group">
+                        <label for="driverLicencia">Número de Licencia *</label>
+                        <input type="text" id="driverLicencia" required placeholder="LIC-YYYY-NNN">
+                    </div>
+                    <div class="form-group">
+                        <label for="driverRuta">Ruta de Operación *</label>
+                        <select id="driverRuta" required>
+                            <option value="L1">L1 Centro-Macapule</option>
+                            <option value="L2">L2 Centro-UAS</option>
+                            <option value="L3">L3 Centro-Toledo</option>
+                            <option value="L4">L4 Centro-Infonavit</option>
+                            <option value="L5">L5 Centro-Malvinas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="driverTurno">Turno Asignado *</label>
+                        <select id="driverTurno" required>
+                            <option value="Matutino">Matutino (06:00 - 14:00)</option>
+                            <option value="Vespertino">Vespertino (14:00 - 22:00)</option>
+                            <option value="Nocturno">Nocturno (22:00 - 06:00)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="driverStatus">Estado Operativo</label>
+                        <select id="driverStatus">
+                            <option value="Disponible">Disponible</option>
+                            <option value="En ruta">En ruta</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group-full">
+                        <label for="driverNotes">Notas u Observaciones del Operador</label>
+                        <textarea id="driverNotes" rows="2" placeholder="Historial médico básico, restricciones o datos internos..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary-flat" id="cancelFormBtn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Chofer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="deleteConfirmModal">
+        <div class="modal-content-box modal-sm text-center">
+            <div class="delete-icon-avatar"><i data-lucide="alert-triangle"></i></div>
+            <h2 class="delete-title">¿Eliminar Operador?</h2>
+            <p class="delete-message">¿Estás seguro de que deseas eliminar a <strong id="deleteDriverNameTarget">[Nombre]</strong>? Esta acción dará de baja su expediente digital y no se puede deshacer.</p>
+            <div class="modal-footer justify-center">
+                <button type="button" class="btn btn-secondary-flat" id="cancelDeleteBtn">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Sí, eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="drawer-overlay" id="incidentsDrawer">
+        <div class="drawer-box">
+            <div class="drawer-header">
+                <div>
+                    <h2>Historial de Incidencias</h2>
+                    <p class="drawer-subtitle" id="drawerDriverName">Operador Técnico</p>
+                </div>
+                <button class="close-drawer-btn" id="closeDrawerBtn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="drawer-body">
+                <div class="incidents-summary-pill">
+                    <span id="incidentCountBadge">0 incidencias</span> registradas este ciclo
+                </div>
+                <div class="timeline-incidents" id="incidentsTimelineContainer">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+    <script src="choferes.js"></script>
+</body>
+</html>

@@ -3,49 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movilidad Urbana Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Chofer - Movilidad Urbana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
+        <!-- ============================= SIDEBAR ============================= -->
         <aside class="sidebar">
-            <div class="logo-section">
-                <i class="fa-solid fa-bus"></i>
-                <div>
-                    <h2>Movilidad Urbana</h2>
-                    <p>Sistema de Transporte</p>
+            <div class="sidebar-top">
+                <div class="logo-container">
+                    <i data-lucide="bus" class="logo-icon"></i>
                 </div>
+
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-view="inicio" data-tip="Inicio" title="Inicio">
+                        <i data-lucide="home"></i>
+                    </button>
+                    <button class="nav-item" data-view="ruta" data-tip="Mi Ruta" title="Mi Ruta">
+                        <i data-lucide="route"></i>
+                    </button>
+                    <button class="nav-item" data-view="horario" data-tip="Horario" title="Horario">
+                        <i data-lucide="clock"></i>
+                    </button>
+                    <button class="nav-item" data-view="turno" data-tip="Mi Turno" title="Mi Turno">
+                        <i data-lucide="id-card"></i>
+                    </button>
+                    <button class="nav-item" data-view="reportar" data-tip="Reportar" title="Reportar">
+                        <i data-lucide="alert-circle"></i>
+                    </button>
+                </nav>
             </div>
-            <div class="user-card">
-                <div class="avatar"><i class="fa-solid fa-user"></i></div>
-                <div class="user-info">
-                    <h3>Andrew Minyard</h3>
-                    <p>Chofer</p>
-                </div>
+
+            <div class="sidebar-bottom">
+                <button class="nav-item" id="logoutBtn" data-tip="Cerrar Sesión" title="Cerrar Sesión">
+                    <i data-lucide="log-out"></i>
+                </button>
             </div>
-            <nav class="menu">
-                <p class="menu-title">MENÚ</p>
-                <a href="#" id="btn-inicio" class="menu-item active"><i class="fa-solid fa-house"></i> Inicio</a>
-                <a href="#" class="menu-item"><i class="fa-solid fa-map"></i> Mapa</a>
-                <a href="#" class="menu-item"><i class="fa-solid fa-route"></i> Mi Ruta</a>
-                <a href="#" id="btn-horario" class="menu-item"><i class="fa-regular fa-clock"></i> Horario</a>
-                <a href="#" class="menu-item"><i class="fa-solid fa-power-off"></i> Mi Turno</a>
-            </nav>
         </aside>
 
-        <div class="main-wrapper">
-            <header class="top-header">
-                <h2 id="header-title">Inicio</h2>
-                <div class="header-actions">
-                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
-                    <button class="role-btn"><i class="fa-solid fa-bus"></i> Chofer</button>
+        <!-- ============================= MAIN ============================= -->
+        <main class="main-content">
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 id="headerTitle">Inicio</h1>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="theme-toggle" id="themeToggleBtn">
+                        <span class="toggle-mode dark-label"><i data-lucide="moon"></i></span>
+                        <span class="toggle-mode light-label active"><i data-lucide="sun"></i> Light</span>
+                    </div>
+
+                    <div class="notification-wrapper" id="notificationMenuWrapper">
+                        <button class="icon-circle-btn" id="bellBtn">
+                            <i data-lucide="bell"></i>
+                            <span class="bell-badge">3</span>
+                        </button>
+                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">Notificaciones</div>
+                            <div class="dropdown-item warning">
+                                <i data-lucide="clock"></i>
+                                <div><strong>Tu ruta:</strong> tráfico moderado en Blvd. Centenario.</div>
+                            </div>
+                            <div class="dropdown-item success">
+                                <i data-lucide="check-circle"></i>
+                                <div><strong>Unidad 14:</strong> mantenimiento al corriente.</div>
+                            </div>
+                            <div class="dropdown-item danger">
+                                <i data-lucide="alert-triangle"></i>
+                                <div><strong>Circuito:</strong> desvío temporal por obra.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrapper" id="profileMenuWrapper">
+                        <div class="profile-trigger" id="profileBtn">
+                            <div class="profile-info-text">
+                                <span class="profile-name" id="profileName">Andrew Minyard</span>
+                                <span class="profile-role">Chofer</span>
+                            </div>
+                            <div class="avatar" id="profileAvatar">AM</div>
+                        </div>
+                        <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                            <div class="dropdown-user-info">
+                                <strong id="profileNameFull">Andrew Minyard</strong>
+                                <span>Ruta L1 · Unidad #14</span>
+                            </div>
+                            <hr>
+                            <a href="#" class="dropdown-link" data-view="turno"><i data-lucide="id-card"></i> Mi Turno</a>
+                            <a href="#" class="dropdown-link" data-view="reportar"><i data-lucide="alert-circle"></i> Reportar incidencia</a>
+                            <hr>
+                            <a href="#" class="dropdown-link text-danger" id="logoutBtn2"><i data-lucide="log-out"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
                 </div>
             </header>
-            <main id="content-area" class="content-area"></main>
-        </div>
+
+            <!-- ÁREA DE CONTENIDO DINÁMICO -->
+            <div id="contentArea"></div>
+        </main>
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>
